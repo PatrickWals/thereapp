@@ -4,6 +4,8 @@
 
 @section('content')
     
+
+@if($event->user_ID ==Auth::user()->id)
 <h1>Post Editor</h1>
     <div class="row justify-content-center">
         
@@ -30,4 +32,19 @@
             {!! Form::close() !!}
         </div>
     </div>
+@else
+    <h1 class="title center">Acces Denied You will be redirected</h1>
+
+<script>
+    
+    function redirect(){
+        
+        window.location.replace("/accesdenied");
+    }
+    redirect();
+    
+</script>
+
+@endif
+
 @endsection

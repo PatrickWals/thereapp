@@ -18,6 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/accesdenied',function(){
+    return view('pages.accesdenied');
+});
 
 Route::resource('events','EventController');
 

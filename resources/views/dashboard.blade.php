@@ -14,8 +14,12 @@
                         </div>
                     @endif
                     Welkom {{Auth::user()->name}}
-                    <br>    
-                    
+                    <ul>
+                        <li>
+                            <a href="events/create">Create Event</a>
+                        </li>                        
+                    </ul>
+                                            
                 </div>
             </div>
         </div>

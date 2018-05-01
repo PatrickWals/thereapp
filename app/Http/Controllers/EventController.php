@@ -4,8 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use Auth;
+
 class EventController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +47,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|min:5' ,
+            'body' => 'required'
+        ]);   
+        
+        $event = new Event;
+        $event->title = $request->input('title');
+        $event->body = $request->input('body');
+        $event->user_ID = Auth::user()->id;
+        $event->save();
+
+        return redirect('/events')->with('succes','Event added');
     }
 
     /**

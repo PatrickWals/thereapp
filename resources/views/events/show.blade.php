@@ -15,14 +15,17 @@
                 {{$event->body}}
             </div>
             <small>Event Created at: {{$event->created_at}}</small>
-        </div>    
-    <a href="/events/{{$event->id}}/edit" class="btn btn-primary float-left">Edit</a>
+        </div>          
+        @if(!Auth::guest())
+            @if($event->user_ID == Auth::user()->id)   
+                <a href="/events/{{$event->id}}/edit" class="btn btn-primary float-left">Edit</a>
 
-    {!!Form::open(['action' => ['EventController@destroy', $event->id], 'method' => 'POST', 'class' => 'float-right'])!!}
-        {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-    {!!Form::close()!!}   
-
+                {!!Form::open(['action' => ['EventController@destroy', $event->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                {!!Form::close()!!}   
+            @endif
+        @endif
     </div>
 </div>
 
