@@ -20,13 +20,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="">
     <div id="app">
         @include('_inc.navbar')
 
-        <main class="py-4">
+        <div class="container-fluid">
             @yield('content')
-        </main>
+        </div>
     </div>
 </body>
 </html>
