@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('events/create');
     }
 
     /**
@@ -71,7 +71,17 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $event = Event::find($id);
+        $event->title = $request->input('title');
+        $event->body = $request->input('body');
+        $event->save();
+
+        return redirect("/events/".$id)->with('success', 'Post Updated');
     }
 
     /**
@@ -82,6 +92,9 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+
+        $event->delete();
+        return redirect('/events')->with('success', 'Post Removed');
     }
 }

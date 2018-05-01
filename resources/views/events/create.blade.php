@@ -1,7 +1,6 @@
 @extends('_layouts.app')
 
 
-
 @section('content')
     
 <h1>Post Editor</h1>
@@ -9,7 +8,7 @@
         
         <div class="col-md-8 ">
             <a href="/events/{{$event->id}}" class="btn btn-primary">Go back</a>
-            {!! Form::open(['action' => ['EventController@update', $event->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+            {!! Form::open(['action' => ['EventController@store', $event->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::label('title', 'Title')}}
                 {{Form::text('title', $event->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}

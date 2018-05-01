@@ -16,7 +16,13 @@
             </div>
             <small>Event Created at: {{$event->created_at}}</small>
         </div>    
-    <a href="/events/{{$event->id}}/edit" class="btn btn-primary float-right">Edit</a>    
+    <a href="/events/{{$event->id}}/edit" class="btn btn-primary float-left">Edit</a>
+
+    {!!Form::open(['action' => ['EventController@destroy', $event->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+        {{Form::hidden('_method', 'DELETE')}}
+        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+    {!!Form::close()!!}   
+
     </div>
 </div>
 

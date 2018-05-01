@@ -20,9 +20,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="">
+<body>
     <div id="app">
         @include('_inc.navbar')
+        @include('_inc.messages')
 
         <div class="container-fluid">
             @yield('content')
