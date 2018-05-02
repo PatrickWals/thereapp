@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li><a href="/events" class="nav-link">Events</a></li>
-                
+                <li><a href="/newsposts" class="nav-link">News</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

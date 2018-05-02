@@ -9,7 +9,7 @@
         <div class="col-md-8 ">
             <a href="/dashboard" class="btn btn-primary">Go back</a>
 
-            {!! Form::open(['action' => 'EventController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+            {!! Form::open(['action' => 'NewsPostController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::label('title', 'Title')}}
                 {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}

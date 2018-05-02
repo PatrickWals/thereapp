@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\NewsPost;
+use Auth;
 
 class NewsPostController extends Controller
 {
@@ -13,7 +15,8 @@ class NewsPostController extends Controller
      */
     public function index()
     {
-        return ('NewsPost');
+        $newsposts = NewsPost::all();
+        return view('newsposts.index')->with('newsposts', $newsposts);
     }
 
     /**
@@ -23,7 +26,7 @@ class NewsPostController extends Controller
      */
     public function create()
     {
-        //
+        return view('newsposts.create');
     }
 
     /**
@@ -34,7 +37,18 @@ class NewsPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|min:5' ,
+            'body' => 'required'
+        ]);   
+        
+        $newsposts = new NewsPost;
+        $newsposts->title = $request->input('title');
+        $newsposts->body = $request->input('body');
+        $newsposts->user_ID = Auth::user()->id;
+        $newsposts->save();
+
+        return redirect('/newsposts')->with('succes','News added');
     }
 
     /**

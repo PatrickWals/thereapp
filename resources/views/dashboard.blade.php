@@ -17,6 +17,10 @@
                     <ul>
                         <li>
                             <a href="events/create">Create Event</a>
+                           
+                        </li>
+                        <li>
+                            <a href="newsposts/create">Create newspost</a>
                         </li>                        
                     </ul>
                                             
