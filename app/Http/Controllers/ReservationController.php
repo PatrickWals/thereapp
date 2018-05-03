@@ -15,7 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-
+        $reservations = UserReservation::all();
+        return view('reservations.index')->with('reservations', $reservations);
     }
 
     /**

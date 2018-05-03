@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1>Events</h1>
+<h1>Reserveringen</h1>
 
 @if(count($reservations)>0)
     @foreach($reservations as $reservation)
@@ -12,5 +12,5 @@
 @else
     <p>Op het moment heeft u geen reserveringen</p>
 @endif
-
+<a href="/reservations/create" class="btn btn-primary">Maak Reservering</a>
 @endsection
