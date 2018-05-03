@@ -17,10 +17,10 @@
             <small>Newspost Created at: {{$newspost->created_at}}</small>
         </div>          
         @if(!Auth::guest())
-            @if($event->user_ID == Auth::user()->id)   
-                <a href="/newposts/{{$newspost->id}}/edit" class="btn btn-primary float-left">Edit</a>
+            @if($newspost->user_ID == Auth::user()->id)   
+                <a href="/newsposts/{{$newspost->id}}/edit" class="btn btn-primary float-left">Edit</a>
 
-                {!!Form::open(['action' => ['NewsPostController@destroy', $newpost->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+                {!!Form::open(['action' => ['NewsPostController@destroy', $newspost->id], 'method' => 'POST', 'class' => 'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                 {!!Form::close()!!}   

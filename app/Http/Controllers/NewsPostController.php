@@ -59,7 +59,8 @@ class NewsPostController extends Controller
      */
     public function show($id)
     {
-        //
+        $newsposts = NewsPost::find($id);
+        return view('newsposts.show')->with('newspost',$newsposts);
     }
 
     /**
@@ -70,7 +71,8 @@ class NewsPostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newsposts = NewsPost::find($id);
+        return view('newsposts.edit')->with('newspost',$newsposts);
     }
 
     /**
@@ -82,7 +84,17 @@ class NewsPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $newsposts = NewsPost::find($id);
+        $newsposts->title = $request->input('title');
+        $newsposts->body = $request->input('body');
+        $newsposts->save();
+
+        return redirect("/newsposts/".$id)->with('success', 'Post Updated');
     }
 
     /**
@@ -93,6 +105,9 @@ class NewsPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $newsposts = NewsPost::find($id);
+
+        $newsposts->delete();
+        return redirect('/newsposts')->with('success', 'Post Removed');
     }
 }
