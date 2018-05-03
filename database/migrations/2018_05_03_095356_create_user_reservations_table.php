@@ -17,7 +17,8 @@ class CreateUserReservationsTable extends Migration
             $table->integer('User_ID')->unsigned();
             $table->foreign('User_ID')->references('User_ID')->on('users');
             $table->integer('Reservation_ID')->unsigned();
-            $table->foreign('Reservation_ID')->references('Resveration_ID')->on('reservations');
+            $table->foreign('Reservation_ID')->references('Reservation_ID')->on('reservations');
+            
             $table->timestamps();
         });
     }
