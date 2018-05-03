@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Room extends Model
 {
-    protected $primarykey = 'Event_ID';
+    protected $primarykey = 'Room_ID';
 }

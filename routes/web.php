@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
 Route::get('/accesdenied',function(){
     return view('pages.accesdenied');
 });
@@ -25,3 +26,5 @@ Route::get('/accesdenied',function(){
 Route::resource('events','EventController');
 
 Route::resource('newsposts','NewsPostController');
+
+Route::resource('reservations','ReservationController');
