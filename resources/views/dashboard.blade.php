@@ -23,7 +23,11 @@
                             <a href="newsposts/create">Create newspost</a>
                         </li>                        
                     </ul>
-                                            
+                    <ul>
+                        <li>
+                            <a href="reservations">List Reservations</a>
+                        </li>                        
+                    </ul>                        
                 </div>
             </div>
         </div>

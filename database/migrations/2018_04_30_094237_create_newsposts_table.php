@@ -18,6 +18,7 @@ class CreateNewspostsTable extends Migration
             $table->integer('user_ID');
             $table->string('title');
             $table->longtext('body');
+            
             $table->timestamps();
         });
     }
