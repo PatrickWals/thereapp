@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username','Firstname','Lastname', 'email', 'password','Phone','Mobile','Status_ID',
+        'Username','Firstname','Lastname', 'Email', 'Password','Phone','Mobile','Status_ID',
     ];
 
     /**
@@ -29,5 +29,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+ * Get the password for the user.
+ *
+ * @return string
+ */
+public function getAuthPassword()
+{
+    return $this->Password;
+}
     
 }
