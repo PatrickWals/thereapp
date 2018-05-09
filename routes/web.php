@@ -28,3 +28,5 @@ Route::resource('events','EventController');
 Route::resource('newsposts','NewsPostController');
 
 Route::resource('reservations','ReservationController');
+
+Route::resource('rooms','RoomController');
