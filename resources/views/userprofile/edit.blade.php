@@ -2,7 +2,8 @@
 
 
 @section('content')
-<div class="row">
+<h1>Edit page</h1>
+{{-- <div class="row">
     <div class="col-md-8 col-md-offset-100">
         <div class="panel panel-default">
             <div class="panel-body text-left">
@@ -13,11 +14,9 @@
                 <h5>Telefoon nummer: {{$user->Phone}}</h5>
                 <h5>Mobiel nummer: {{$user->Mobile}}</h5>
                 <h5>E-mail adress:{{$user->Email}}</h5>
-
-                <a href="/profile/edit/{{$user->Firstname}}" class="btn btn-primary">Edit Profile</a>
-                {{-- {{Form:: Edit profile('/profile/edit', ['class'=>'btn btn-primary'])}} --}}
+                
             </div>      
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
