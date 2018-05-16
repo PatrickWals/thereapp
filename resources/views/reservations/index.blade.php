@@ -7,7 +7,9 @@
 
 @if(count($reservations)>0)
     @foreach($reservations as $reservation)
-        {{$reservation->Reservation_ID}}
+        <div class="container">
+            {{$reservation->Startdate}}
+        </div>
     @endforeach
 @else
     <p>Op het moment heeft u geen reserveringen</p>

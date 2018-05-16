@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserReservation;
+use App\Reservation;
 use App\Room;
-use App\Auth;
+use Auth;
 
 class ReservationController extends Controller
 {
+
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +28,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::where('User_ID', Auth::user()->$User_ID);
-
+        $reservations = Reservation::where('User_ID', Auth::user()->User_ID)->get();
 
         return view('reservations.index')->with('reservations', $reservations);
     }

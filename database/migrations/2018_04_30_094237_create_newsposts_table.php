@@ -19,6 +19,7 @@ class CreateNewspostsTable extends Migration
             $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');
             $table->string('Title');
             $table->longtext('Body');
+            $table->string('News_status');
             $table->string('News_Pic')->nullable();
             
             $table->timestamps();

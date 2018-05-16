@@ -19,8 +19,8 @@ class CreateReservationsTable extends Migration
             $table->foreign('User_ID')->references('user_ID')->on('users')->onDelete('cascade');
             $table->integer('Room_ID')->unsigned();
             $table->foreign('Room_ID')->references('Room_ID')->on('rooms')->onDelete('cascade');
-            $table->date('Startdate');
-            $table->date('Enddate');
+            $table->date('Start_date');
+            $table->date('End_date');
             $table->float('PriceReservation');
             $table->string('Reservation_status'); 
 
