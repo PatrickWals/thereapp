@@ -58,7 +58,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($userename)
+    public function edit($username)
     {
         $user = User::whereUsername($username)->first();
 
@@ -72,9 +72,26 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
-        //
+        $this->validate($request,[
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'phone' => '',
+            'mobile' => '',
+            'email' => 'required'
+        ]);
+
+        $user = User::whereUsername($username);
+        $user->Firstname = $request->input('firstname');
+        $user->Lastname = $request->input('lastname');
+        $user->Phone = $request->input('phone');
+        $user->Mobile = $request->input('mobile');
+        $user->Email = $request->input('email');
+        
+        $user->save();
+
+        return redirect("/profile/".$username)->with('success', 'Post Updated');
     }
 
     /**

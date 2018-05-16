@@ -16,7 +16,7 @@
                 <h5>E-mail adress:{{$user->Email}}</h5>
                 
                 @if(auth::user()->User_ID == $user->User_ID)
-                <a href="/profile/edit/{{$user->Username}}" class="btn btn-primary">Edit Profile</a>
+                <a href="/profile/{{$user->Username}}/edit" class="btn btn-primary">Edit Profile</a>
                 @endif
             </div>      
         </div>

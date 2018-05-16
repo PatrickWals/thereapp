@@ -45,7 +45,7 @@ class NewsPostController extends Controller
         $newsposts = new NewsPost;
         $newsposts->title = $request->input('title');
         $newsposts->body = $request->input('body');
-        $newsposts->user_ID = Auth::user()->id;
+        $newsposts->user_ID = Auth::user()->User_ID;
         $newsposts->save();
 
         return redirect('/newsposts')->with('succes','News added');
@@ -92,6 +92,7 @@ class NewsPostController extends Controller
         $newsposts = NewsPost::find($id);
         $newsposts->title = $request->input('title');
         $newsposts->body = $request->input('body');
+        
         $newsposts->save();
 
         return redirect("/newsposts/".$id)->with('success', 'Post Updated');
