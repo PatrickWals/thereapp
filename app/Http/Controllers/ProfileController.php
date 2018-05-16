@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+
 class ProfileController extends Controller
 {
     /**
@@ -48,7 +49,7 @@ class ProfileController extends Controller
     {
         $user = User::whereUsername($username)->first();
 
-        return view('userprofile.user', compact('user'));
+        return view('userprofile.show', compact('user'));
     }
 
     /**
@@ -57,9 +58,11 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($userename)
     {
-        //
+        $user = User::whereUsername($username)->first();
+
+        return view('userprofile.edit', compact('user'));
     }
 
     /**

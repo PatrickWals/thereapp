@@ -34,7 +34,7 @@
 @if(count($users)>0)
     @foreach($users as $user)
         <div class="container ">
-            <h3><a href="/profile/{{$user->Firstname}}">{{$user->Firstname}} {{$user->Lastname}}</a></h3>
+            <h3><a href="/profile/{{$user->Username}}">{{$user->Firstname}} {{$user->Lastname}}</a></h3>
         </div>
     @endforeach
 @else

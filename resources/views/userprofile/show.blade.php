@@ -2,6 +2,7 @@
 
 
 @section('content')
+
 <div class="row">
     <div class="col-md-8 col-md-offset-100">
         <div class="panel panel-default">
@@ -15,11 +16,11 @@
                 <h5>E-mail adress:{{$user->Email}}</h5>
                 
                 @if(auth::user()->User_ID == $user->User_ID)
-                <a href="/profile/edit/{{$user->Firstname}}" class="btn btn-primary">Edit Profile</a>
+                <a href="/profile/edit/{{$user->Username}}" class="btn btn-primary">Edit Profile</a>
                 @endif
-                {{-- {{Form:: Edit profile('/profile/edit', ['class'=>'btn btn-primary'])}} --}}
             </div>      
         </div>
     </div>
 </div>
+
 @endsection
