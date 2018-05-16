@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\UserReservation;
 use App\Room;
+use App\Auth;
 
 class ReservationController extends Controller
 {
@@ -15,7 +16,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = UserReservation::all();
+        $reservations = Reservation::where('User_ID', Auth::user()->$User_ID);
+
+
         return view('reservations.index')->with('reservations', $reservations);
     }
 

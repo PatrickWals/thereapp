@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewspostsTable extends Migration
+class CreateUserinterestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateNewspostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('newsposts', function (Blueprint $table) {
-            $table->increments('NewsPost_ID');
+        Schema::create('userinterests', function (Blueprint $table) {
             $table->integer('User_ID')->unsigned();
-            $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');
-            $table->string('Title');
-            $table->longtext('Body');
-            $table->string('News_Pic')->nullable();
-            
+            $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');;
+            $table->integer('Interest_ID')->unsigned();
+            $table->foreign('Interest_ID')->references('Interest_ID')->on('interests')->onDelete('cascade');;
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateNewspostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('newsposts');
+        Schema::dropIfExists('userinterests');
     }
 }
