@@ -37,14 +37,14 @@
                     </div>
                     
 
-                    {{-- <div class="form-group">
-                {{Form::label('body', 'Body')}}
-                {{Form::textarea('body', $user->LastName, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                    <div class="form-group">
+                        {{Form::label('aboutme', 'Over mij')}}
+                        {{Form::textarea('aboutme', $user->Aboutme_Str, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => ''])}}
                     </div>
 
                     <div class="form-group">
                 
-                    </div> --}}
+                    </div>
             {{Form::hidden('_method','PUT')}}
             {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
