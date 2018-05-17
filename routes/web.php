@@ -29,8 +29,6 @@ Route::resource('newsposts','NewsPostController');
 
 Route::resource('reservations','ReservationController');
 
-<<<<<<< HEAD
 Route::resource('profile','ProfileController');
-=======
+
 Route::resource('rooms','RoomController');
->>>>>>> 1ea25da294cfa51da8bec0b4ec060fb33f055358

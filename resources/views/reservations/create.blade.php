@@ -18,9 +18,11 @@
                     {{Form::label('enddate', 'Eind datum')}}
                     {{Form::date('enddate', '', ['class' => 'form-control', 'placeholder' => '='])}}
                 </div>
-                {{-- <div class="form-group">
-                    {{Form::file('cover_image')}}
-                </div> --}}
+                
+                <div class="form-group">
+                    {!! Form::select('items', $items, null, ) !!}
+                </div>
+
                 {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
         </div>
