@@ -30,3 +30,8 @@ Route::resource('newsposts','NewsPostController');
 Route::resource('reservations','ReservationController');
 
 Route::resource('profile','ProfileController');
+<<<<<<< HEAD
+=======
+
+Route::resource('rooms','RoomController');
+>>>>>>> reservations2.1

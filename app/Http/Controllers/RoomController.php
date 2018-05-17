@@ -51,7 +51,8 @@ class RoomController extends Controller
         $room->Availability = 0;
         $room->Description = $request->input('description');
         $room->RoomPrice = $request->input('roomprice');
-        $room->FutureLab_ID = $request->input('futurelab');
+        $room->FutureLab_Str = $request->input('futurelab');
+        $room->Room_status = 'Available';
         $room ->save();
 
         return redirect('/rooms/create')->with('success', 'Room added');
@@ -103,7 +104,7 @@ class RoomController extends Controller
         $room->Availability = 0;
         $room->Description = $request->input('description');
         $room->RoomPrice = $request->input('roomprice');
-        $room->FutureLab_ID = $request->input('futurelab');
+        $room->FutureLab_Str = $request->input('futurelab');
         $room ->save();
 
         return redirect('/rooms');

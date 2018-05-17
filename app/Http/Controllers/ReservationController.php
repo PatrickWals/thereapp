@@ -40,7 +40,9 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('reservations.create');
+        $rooms = Room::pluck('RoomName','Room_ID');
+        //return $rooms;
+        return view('reservations.create')->with('rooms', $rooms);
     }
 
     /**
