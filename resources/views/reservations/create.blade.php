@@ -11,12 +11,12 @@
 
             {!! Form::open(['action' => 'ReservationController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
-                    {{Form::label('title', 'Title')}}
-                    {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
+                    {{Form::label('startdate', 'Begin datum')}}
+                    {{Form::date('startdate', '', ['class' => 'form-control', 'placeholder' => ''])}}
                 </div>
                 <div class="form-group">
-                    {{Form::label('body', 'Body')}}
-                    {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                    {{Form::label('enddate', 'Eind datum')}}
+                    {{Form::date('enddate', '', ['class' => 'form-control', 'placeholder' => '='])}}
                 </div>
                 {{-- <div class="form-group">
                     {{Form::file('cover_image')}}

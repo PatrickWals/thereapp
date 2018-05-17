@@ -15,12 +15,15 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('Reservation_ID');
+            $table->integer('User_ID')->unsigned();
+            $table->foreign('User_ID')->references('user_ID')->on('users')->onDelete('cascade');
             $table->integer('Room_ID')->unsigned();
-            //$table->foreign('Room_ID')->references('Room_ID')->on('rooms');
-            $table->date('Startdate');
-            $table->date('Enddate');
+            $table->foreign('Room_ID')->references('Room_ID')->on('rooms')->onDelete('cascade');
+            $table->date('Start_date');
+            $table->date('End_date');
             $table->float('PriceReservation');
-                        
+            $table->string('Reservation_status'); 
+
             $table->timestamps();
         });
     }
