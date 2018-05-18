@@ -24,6 +24,7 @@
     <div id="app">
         @include('_inc.navbar')
         @include('_inc.messages')
+        {{-- @include('_inc.rightsidebar') --}}
 
         <div class="container-fluid">
             @yield('content')

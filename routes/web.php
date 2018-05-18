@@ -11,17 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
+
+Route::get('/', 'PagesController@home');
 
 Route::get('/dashboard', 'DashboardController@index');
 
-Route::get('/accesdenied',function(){
-    return view('pages.accesdenied');
-});
+Route::get('/accesdenied', 'PagesController@accesdenied');
 
 Route::resource('events','EventController');
 
@@ -30,8 +26,5 @@ Route::resource('newsposts','NewsPostController');
 Route::resource('reservations','ReservationController');
 
 Route::resource('profile','ProfileController');
-<<<<<<< HEAD
-=======
 
 Route::resource('rooms','RoomController');
->>>>>>> reservations2.1
