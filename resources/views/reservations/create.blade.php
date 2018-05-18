@@ -20,7 +20,7 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::select('items', $items, null, ) !!}
+                    {{Form::select('size', $rooms, null, ['placeholder' => 'Pick a Room...'])}}
                 </div>
 
                 {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
