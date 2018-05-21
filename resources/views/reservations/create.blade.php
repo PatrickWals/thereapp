@@ -16,11 +16,16 @@
                 </div>
                 <div class="form-group">
                     {{Form::label('enddate', 'Eind datum')}}
-                    {{Form::date('enddate', '', ['class' => 'form-control', 'placeholder' => '='])}}
+                    {{Form::date('enddate', '', ['class' => 'form-control', 'placeholder' => ''])}}
                 </div>
                 
                 <div class="form-group">
-                    {{Form::select('size', $rooms, null, ['placeholder' => 'Pick a Room...'])}}
+                    {{Form::select('room', $rooms, null, ['placeholder' => 'Pick a Room...'])}}
+                </div>
+
+                <div class="form-group">
+                    {{Form::label('remarks', 'Opmerkingen')}}
+                    {{Form::textarea('remarks','',['class' => 'form-control', 'placeholder' => ''])}}
                 </div>
 
                 {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}

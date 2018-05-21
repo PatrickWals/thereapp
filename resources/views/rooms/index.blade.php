@@ -9,8 +9,7 @@
     @foreach($rooms as $room)
     <div class="row">
         <div class="col-md-2">
-            <h3>
-               
+            <h3>               
                 {!!Form::open(['action' => ['RoomController@destroy', $room->Room_ID], 'method' => 'POST'])!!}
                  <a href="rooms/{{$room->Room_ID}}">{{$room->RoomName}}</a>
                 {{Form::hidden('_method', 'DELETE')}}

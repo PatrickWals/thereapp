@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('Phone')->nullable();
             $table->string('Mobile')->nullable();
             $table->string('Profile_pic')->nullable();
-            $table->integer('Status_Str');
+            $table->string('Status_Str');
             $table->string('Aboutme_Str')->nullable();
             
             $table->rememberToken();
