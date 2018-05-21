@@ -51,11 +51,28 @@ class EventController extends Controller
             'title' => 'required|min:5' ,
             'body' => 'required'
         ]);   
+        if ($request->hasFile ('event_image')){
+            $filenameWhithtxt = $request->file ('event_image')-> getClientOriginalName(); 
+            // Get just filename
+            $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+            //get just ext
+            $extention= $request->file('event_image')->getClientOriginalExtension();
+            //Filename to store
+            $filenametostore = $filename.time().'.'.$extention; 
+            //upload image
+            $path = $request->file('event_image')->storeAs('public/event_image',$filenametostore);
+        } else {
+            $filenametostore='noimage.jpg';
+        }
         
         $event = new Event;
-        $event->title = $request->input('title');
-        $event->body = $request->input('body');
-        $event->user_ID = Auth::user()->id;
+        $event->Reservation_ID = 1;
+        $event->Eventname = 'eventname';
+        $event->Event_status ='eventstaus'; 
+        $event->Futurelab_Str= 2; 
+        $event->Owner_ID =1;
+        $event->Event_Pic =$filenametostore;
+        $event->Description ='eventstaus';
         $event->save();
 
         return redirect('/events')->with('succes','Event added');
@@ -98,10 +115,26 @@ class EventController extends Controller
             'title' => 'required',
             'body' => 'required'
         ]);
+        if ($request->hasFile ('event_image')){
+            $filenameWhithtxt = $request->file ('event_image')-> getClientOriginalName(); 
+            // Get just filename
+            $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+            //get just ext
+            $extention= $request->file('event_image')->getClientOriginalExtension();
+            //Filename to store
+            $filenametostore = $filename.time().'.'.$extention; 
+            //upload image
+            $path = $request->file('event_image')->storeAs('public/event_image',$filenametostore);
+        } else {
+            $filenametostore='noimage.jpg';
+        }
 
+
+            
         $event = Event::find($id);
         $event->title = $request->input('title');
         $event->body = $request->input('body');
+        $event->Event_Pic = $filenametostore;
         $event->save();
 
         return redirect("/events/".$id)->with('success', 'Post Updated');

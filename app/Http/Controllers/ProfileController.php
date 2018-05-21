@@ -36,7 +36,20 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile ('profile_image')){
+            $filenameWhithtxt = $request->file ('profile_image')-> getClientOriginalName(); 
+            // Get just filename
+            $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+            //get just ext
+            $extention= $request->file('profile_image')->getClientOriginalExtension();
+            //Filename to store
+            $filenametostore = $filename.time().'.'.$extention; 
+            //upload image
+            $path = $request->file('profile_image')->storeAs('public/profile_image',$filenametostore);
+        } else {
+            $filenametostore='noimage.jpg';
+        }
+        return $filenametostore;
     }
 
     /**
@@ -79,8 +92,24 @@ class ProfileController extends Controller
             'lastname' => 'required',
             'phone' => '',
             'mobile' => '',
-            'email' => 'required'
-        ]);
+            'email' => 'required',
+            'profile_image'=> 'image|nullable|max:1999' 
+            ]);
+        
+    if ($request->hasFile ('profile_image')){
+        $filenameWhithtxt = $request->file ('profile_image')-> getClientOriginalName(); 
+        // Get just filename
+        $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+        //get just ext
+        $extention= $request->file('profile_image')->getClientOriginalExtension();
+        //Filename to store
+        $filenametostore = $filename.time().'.'.$extention; 
+        //upload image
+        $path = $request->file('profile_image')->storeAs('public/profile_image',$filenametostore);
+    } else {
+        $filenametostore='noimage.jpg';
+    }
+    return $filenametostore;
 
         $user = User::whereUsername($username);
         $user->Firstname = $request->input('firstname');
@@ -88,7 +117,7 @@ class ProfileController extends Controller
         $user->Phone = $request->input('phone');
         $user->Mobile = $request->input('mobile');
         $user->Email = $request->input('email');
-        
+        $user->Profile_Pic = $filenametostore;
         $user->save();
 
         return redirect("/profile/".$username)->with('success', 'Post Updated');
