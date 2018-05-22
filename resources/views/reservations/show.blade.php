@@ -5,25 +5,23 @@
 
 <div class="row justify-content-center">
     <div class="col-md-8" >
-        <a href="/events" class="btn btn-primary">Go back</a>
-        <div class="card">
-            <div class="card-header">
-                <h3><b>{{$event->title}}</b></h3>
-            </div>
-
-            <div class="card-body">
-                {{$event->body}}
-            </div>
-            <small>Event Created at: {{$event->created_at}}</small>
-        </div>          
+        <a href="/dashboard" class="btn btn-primary">Go back</a> 
+         
         @if(!Auth::guest())
-            @if($event->user_ID == Auth::user()->id)   
-                <a href="/events/{{$event->id}}/edit" class="btn btn-primary float-left">Edit</a>
+            @if($reservation->user_ID == Auth::user()->id)   
+            <div class="container">
+               <br> Begin Datum: {{$reservation->Start_date}} <br>
+                Eind Datum: {{$reservation->Start_date}} <br>
+                Kamer: {{$room->RoomName}} <br>
+                Prijs: € {{$reservation->RoomPrice}} <br>
+                Status: {{$reservation->Reservation_status}} <br>
+                Opmerkingen: {{$reservation->Reservation_remarks}} <br><br>
 
-                {!!Form::open(['action' => ['EventController@destroy', $event->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+                {!!Form::open(['action' => ['ReservationController@destroy', $reservation->Reservation_ID], 'method' => 'POST', 'class' => ''])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                {!!Form::close()!!}   
+                {!!Form::close()!!} 
+            </div>
             @endif
         @endif
     </div>

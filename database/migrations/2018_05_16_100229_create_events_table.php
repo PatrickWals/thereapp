@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->foreign('Reservation_ID')->references('Reservation_ID')->on('reservations')->onDelete('cascade');
             $table->string('Eventname');
             $table->string('Event_status');
+            $table->string('Event_pic')->nullable();
             $table->integer('Futurelab_Str');
             $table->integer('Owner_ID')->unsigned();
             $table->foreign('Owner_ID')->references('User_ID')->on('users')->onDelete('cascade');;

@@ -8,7 +8,9 @@
 @if(count($reservations)>0)
     @foreach($reservations as $reservation)
         <div class="container">
-            {{$reservation->Startdate}}
+            <a href="reservations/{{$reservation->Reservation_ID}}">
+                {{$reservation->Start_date}}
+            </a>  
         </div>
     @endforeach
 @else

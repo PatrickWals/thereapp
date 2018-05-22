@@ -22,8 +22,12 @@ class CreateUsersTable extends Migration
             $table->string('Email')->unique();
             $table->string('Phone')->nullable();
             $table->string('Mobile')->nullable();
+<<<<<<< HEAD
             $table->string('Futurelab_Str')->nullable();
             $table->string('Profile_Pic')->nullable();
+=======
+            $table->string('Profile_pic')->nullable();
+>>>>>>> reservationS2.1
             $table->string('Status_Str');
             $table->string('Aboutme_Str')->nullable();
             

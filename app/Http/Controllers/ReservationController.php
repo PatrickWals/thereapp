@@ -40,7 +40,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $rooms = Room::pluck('RoomName','Room_ID');
+        $rooms = Room::roomstatus('Available')->pluck('RoomName','Room_ID');
         //return $rooms;
         return view('reservations.create')->with('rooms', $rooms);
     }
@@ -53,7 +53,26 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $this->validate($request,[
+            'startdate' => 'required',
+            'enddate' => 'required',
+            'room' => 'required',
+            'remarks' => 'required'
+        ]);
+        $room = Room::find($request->input('room'));
+
+        $reservation = new Reservation;
+        $reservation->User_ID = Auth::user()->User_ID;
+        $reservation->Room_ID = $request->input('room');
+        $reservation->Start_date = $request->input('startdate');
+        $reservation->End_date = $request->input('enddate');
+        $reservation->Reservation_remarks = $request->input('remarks');
+        $reservation->PriceReservation = $room->RoomPrice;
+        $reservation->Reservation_status ='Res_submit';
+        $reservation->save();
+
+        return redirect('/dashboard');       
     }
 
     /**
@@ -64,7 +83,9 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        //
+        $reservation = Reservation::find($id);
+        $room = Room::find($reservation->Room_ID);
+        return view('reservations.show', compact('reservation', 'room'));
     }
 
     /**
@@ -98,6 +119,11 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $reservation = Reservation::find($id);
+
+        $reservation->delete();
+
+        return redirect('/reservations')->with('success', 'Reservation Removed');
     }
 }

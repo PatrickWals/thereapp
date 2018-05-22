@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->string('RoomName');
             $table->float('RoomPrice');
             $table->string('Room_status');
+            $table->string('Room_pic')->nullable();
             $table->longtext('Description');
             $table->boolean('Availability');
             $table->string('FutureLab_Str');
