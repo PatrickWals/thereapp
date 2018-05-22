@@ -13,7 +13,8 @@
                 <h2>achternaam: {{$user->Lastname}}</h2>
                 <h5>Telefoon nummer: {{$user->Phone}}</h5>
                 <h5>Mobiel nummer: {{$user->Mobile}}</h5>
-                <h5>E-mail adress:{{$user->Email}}</h5>
+                <h5>E-mail adress: {{$user->Email}}</h5>
+                <h5>Future lab: {{$user->Futurelab_Str}}</h5>
                 
                 @if(auth::user()->User_ID == $user->User_ID)
                 <a href="/profile/{{$user->Username}}/edit" class="btn btn-primary">Edit Profile</a>
