@@ -82,16 +82,18 @@ class ProfileController extends Controller
             'email' => 'required'
         ]);
 
-        $user = User::whereUsername($username);
+        $user = User::whereUsername($username)->first();
         $user->Firstname = $request->input('firstname');
         $user->Lastname = $request->input('lastname');
         $user->Phone = $request->input('phone');
         $user->Mobile = $request->input('mobile');
         $user->Email = $request->input('email');
+        $user->Futurelab_Str = $request->input('futurelab');
         
+
         $user->save();
 
-        return redirect("/profile/".$username)->with('success', 'Post Updated');
+        return redirect('profile/'.$username)->with('success', 'Post Updated');
     }
 
     /**

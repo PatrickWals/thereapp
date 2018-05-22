@@ -35,8 +35,11 @@
                         {{Form::label('email', 'E-mail adress')}}
                         {{Form::text('email', $user->Email, ['class' => 'form-control', 'placeholder' => ''])}}
                     </div>
-                    
 
+                    <div class="form-group">
+                        {{Form::select('futurelab', ['Flab1' => 'Flab1', 'Flab2' => 'Flab2', 'Flab3' => 'Flab3', 'Flab4' => 'Flab4', 'Flab5' => 'Flab5', 'Flab6' => 'Flab6'], null, ['placeholder' => 'Kies een Future Lab'])}}
+                    </div>
+                    
                     <div class="form-group">
                         {{Form::label('aboutme', 'Over mij')}}
                         {{Form::textarea('aboutme', $user->Aboutme_Str, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => ''])}}
