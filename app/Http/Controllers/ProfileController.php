@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Interest;
+use App\Userinterest;
 use Auth;
 
 class ProfileController extends Controller
@@ -61,8 +63,9 @@ class ProfileController extends Controller
     public function edit($username)
     {
         $user = User::whereUsername($username)->first();
+        $interests = Interest::all();
 
-        return view('userprofile.edit', compact('user'));
+        return view('userprofile.edit', compact('user','interests'));
     }
 
     /**
@@ -82,13 +85,25 @@ class ProfileController extends Controller
             'email' => 'required'
         ]);
 
+        $interests = $request->input('interest');
+        //return $interests;
+        $userinterest =  Userinterest::whereUser_id(Auth::user()->User_ID)->delete();
+        foreach($interests as $interest)
+        {
+            $userinterest =  new Userinterest;
+
+            $userinterest->User_ID = Auth::user()->User_ID;
+            $userinterest->Interest_ID = $interest;
+            $userinterest->save();
+        }
+
         $user = User::whereUsername($username)->first();
         $user->Firstname = $request->input('firstname');
         $user->Lastname = $request->input('lastname');
         $user->Phone = $request->input('phone');
         $user->Mobile = $request->input('mobile');
         $user->Email = $request->input('email');
-        $user->Futurelab_Str = $request->input('futurelab');
+        //$user->Futurelab_Str = $request->input('futurelab');
         
 
         $user->save();

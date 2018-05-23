@@ -46,7 +46,14 @@
                     </div>
 
                     <div class="form-group">
-                
+                        @foreach($interests as $interest)
+                            {{Form::checkbox('interest[]', $interest->Interest_ID)}}
+                            {{Form::label('interest[]', $interest->Interest_Name)}}
+                            {{-- @if($user->User_ID == Auth::user()->User_ID && $interest->Interest_ID == $userinterests->Interest_ID)
+                                <h1>interest[]</h1>
+                            @endif --}}
+                        @endforeach
+                        
                     </div>
             {{Form::hidden('_method','PUT')}}
             {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
