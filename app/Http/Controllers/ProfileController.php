@@ -64,8 +64,11 @@ class ProfileController extends Controller
     {
         $user = User::whereUsername($username)->first();
         $interests = Interest::all();
-
-        return view('userprofile.edit', compact('user','interests'));
+        
+        $userinterests = Userinterest::where('User_ID', Auth::user()->User_ID)->get();
+    
+        //return $userinterests;
+        return view('userprofile.edit', compact('user','interests','userinterests','checkUserinterest'));
     }
 
     /**

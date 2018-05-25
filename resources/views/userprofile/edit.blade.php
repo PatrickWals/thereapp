@@ -44,15 +44,37 @@
                         {{Form::label('aboutme', 'Over mij')}}
                         {{Form::textarea('aboutme', $user->Aboutme_Str, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => ''])}}
                     </div>
-
+                        
                     <div class="form-group">
-                        @foreach($interests as $interest)
-                            {{Form::checkbox('interest[]', $interest->Interest_ID)}}
-                            {{Form::label('interest[]', $interest->Interest_Name)}}
-                            {{-- @if($user->User_ID == Auth::user()->User_ID && $interest->Interest_ID == $userinterests->Interest_ID)
-                                <h1>interest[]</h1>
-                            @endif --}}
-                        @endforeach
+
+                        @if(count($userinterests)==0)
+                            @foreach($interests as $interest)
+                                 {{Form::checkbox('interest[]', $interest->Interest_ID)}}
+                                {{Form::label('interest[]', $interest->Interest_Name)}}
+                            @endforeach
+                        @else
+                        @for($i = 0; $i < count($userinterests); $i++)
+                            @for($j = 0; $j < count($interests); $j++)
+
+                                
+                                @if($interests[$j]->Interest_ID == $userinterests[$i]->Interest_ID)
+
+                                    {{-- {{$interest->Interest_ID}} = {{$userinterest->Interest_ID}} --}}
+                                    {{Form::checkbox('interest[]', $interests[$j]->Interest_ID, true)}}
+                                    {{Form::label('interest[]', $interests[$j]->Interest_Name)}}
+                                    @break
+                                    
+                                @elseif($interests[$j]->Interest_ID > $userinterests[$i]->Interest_ID)
+                                    {{-- {{$interest->Interest_ID}} /= {{$userinterest->Interest_ID}} --}}
+                                    {{Form::checkbox('interest[]', $interests[$j]->Interest_ID)}}
+                                    {{Form::label('interest[]', $interests[$j]->Interest_Name)}}
+                                  
+                                    
+                                @endif
+                                
+                            @endfor
+                        @endfor
+                        @endif
                         
                     </div>
             {{Form::hidden('_method','PUT')}}
