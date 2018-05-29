@@ -15,6 +15,8 @@
                 <h5>Mobiel nummer: {{$user->Mobile}}</h5>
                 <h5>E-mail adress: {{$user->Email}}</h5>
                 <h5>Future lab: {{$user->Futurelab_Str}}</h5>
+                <h5>About me: <br><br> {{$user->Aboutme_Str}}</h5>
+
                 
                 @if(auth::user()->User_ID == $user->User_ID)
                 <a href="/profile/{{$user->Username}}/edit" class="btn btn-primary">Edit Profile</a>

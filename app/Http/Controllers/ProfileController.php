@@ -89,6 +89,7 @@ class ProfileController extends Controller
         $user->Mobile = $request->input('mobile');
         $user->Email = $request->input('email');
         $user->Futurelab_Str = $request->input('futurelab');
+        $user->Aboutme_Str = $request->input('aboutme');
         
 
         $user->save();
