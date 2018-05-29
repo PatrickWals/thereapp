@@ -119,7 +119,10 @@ class ProfileController extends Controller
 
         $interests = $request->input('interest');
         //return $interests;
+
+
         $userinterest =  Userinterest::whereUser_id(Auth::user()->User_ID)->delete();
+
         foreach($interests as $interest)
         {
             $userinterest =  new Userinterest;
@@ -135,7 +138,7 @@ class ProfileController extends Controller
         $user->Phone = $request->input('phone');
         $user->Mobile = $request->input('mobile');
         $user->Email = $request->input('email');
-        $user->Futurelab_Str = $request->input('futurelab');
+        //$user->Futurelab_Str = $request->input('futurelab');
         $user->Aboutme_Str = $request->input('aboutme');
         $user->Profile_Pic = $filenametostore;
         

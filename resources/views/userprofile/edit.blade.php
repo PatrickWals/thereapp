@@ -47,35 +47,27 @@
                         
                     <div class="form-group">
 
-                        @if(count($userinterests)==0)
-                            @foreach($interests as $interest)
-                                 {{Form::checkbox('interest[]', $interest->Interest_ID)}}
-                                {{Form::label('interest[]', $interest->Interest_Name)}}
-                            @endforeach
-                        @else
+                        {{-- @foreach($interests as $interest)
+                            {{Form::checkbox('interest[]', $interest->Interest_ID),false}}
+                            {{Form::label('interest[]', $interest->Interest_Name)}}
+                        @endforeach --}}
+                        @for($x = 0; $x < count($interests); $x++)
+                            
+                        <input type="checkbox" id={{$x+1}} name = "interest[]" value= "{{$interests[$x]->Interest_ID}}" />
+                        @endfor
+                        
                         @for($i = 0; $i < count($interests); $i++)
                             @for($j = 0; $j < count($userinterests); $j++)
-                                @if($interests[$i]->Interest_ID > $userinterests[$j]->Interest_ID)
-
                                 
-                                @elseif($interests[$i]->Interest_ID == $userinterests[$j]->Interest_ID)
+                                @if($interests[$i]->Interest_ID == $userinterests[$j]->Interest_ID)
 
-                                    {{-- {{$interest->Interest_ID}} = {{$userinterest->Interest_ID}} --}}
-                                    {{Form::checkbox('interest[]', $interests[$i]->Interest_ID, true)}}
-                                    {{Form::label('interest[]', $interests[$i]->Interest_Name)}}
-                                    @break
-                                    
                                 @else
-                                {{-- if($interests[$i]->Interest_ID > $userinterests[$j]->Interest_ID) --}}
-                                    {{-- {{$interest->Interest_ID}} /= {{$userinterest->Interest_ID}} --}}
-                                    {{Form::checkbox('interest[]', $interests[$i]->Interest_ID)}}
-                                    {{Form::label('interest[]', $interests[$i]->Interest_Name)}}
-                                                                      
+
                                 @endif
                                 
                             @endfor
                         @endfor
-                        @endif
+                        
                         
                     </div>
                     {{-- <div class="form-group">
