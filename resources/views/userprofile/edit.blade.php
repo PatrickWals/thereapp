@@ -53,23 +53,24 @@
                                 {{Form::label('interest[]', $interest->Interest_Name)}}
                             @endforeach
                         @else
-                        @for($i = 0; $i < count($userinterests); $i++)
-                            @for($j = 0; $j < count($interests); $j++)
+                        @for($i = 0; $i < count($interests); $i++)
+                            @for($j = 0; $j < count($userinterests); $j++)
+                                @if($interests[$i]->Interest_ID > $userinterests[$j]->Interest_ID)
 
                                 
-                                @if($interests[$j]->Interest_ID == $userinterests[$i]->Interest_ID)
+                                @elseif($interests[$i]->Interest_ID == $userinterests[$j]->Interest_ID)
 
                                     {{-- {{$interest->Interest_ID}} = {{$userinterest->Interest_ID}} --}}
-                                    {{Form::checkbox('interest[]', $interests[$j]->Interest_ID, true)}}
-                                    {{Form::label('interest[]', $interests[$j]->Interest_Name)}}
+                                    {{Form::checkbox('interest[]', $interests[$i]->Interest_ID, true)}}
+                                    {{Form::label('interest[]', $interests[$i]->Interest_Name)}}
                                     @break
                                     
-                                @elseif($interests[$j]->Interest_ID > $userinterests[$i]->Interest_ID)
+                                @else
+                                {{-- if($interests[$i]->Interest_ID > $userinterests[$j]->Interest_ID) --}}
                                     {{-- {{$interest->Interest_ID}} /= {{$userinterest->Interest_ID}} --}}
-                                    {{Form::checkbox('interest[]', $interests[$j]->Interest_ID)}}
-                                    {{Form::label('interest[]', $interests[$j]->Interest_Name)}}
-                                  
-                                    
+                                    {{Form::checkbox('interest[]', $interests[$i]->Interest_ID)}}
+                                    {{Form::label('interest[]', $interests[$i]->Interest_Name)}}
+                                                                      
                                 @endif
                                 
                             @endfor
