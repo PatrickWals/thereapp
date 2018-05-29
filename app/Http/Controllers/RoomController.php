@@ -45,6 +45,19 @@ class RoomController extends Controller
             'description' => 'required',
             'roomprice' => 'integer|required'
         ]);
+        if ($request->hasFile ('room_image')){
+            $filenameWhithtxt = $request->file ('room_image')-> getClientOriginalName(); 
+            // Get just filename
+            $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+            //get just ext
+            $extention= $request->file('room_image')->getClientOriginalExtension();
+            //Filename to store
+            $filenametostore = $filename.time().'.'.$extention; 
+            //upload image
+            $path = $request->file('room_image')->storeAs('public/room_image',$filenametostore);
+        } else {
+            $filenametostore='noimage.jpg';
+        }
 
         $room = new Room;
         $room->RoomName = $request->input('roomname');
@@ -53,6 +66,8 @@ class RoomController extends Controller
         $room->RoomPrice = $request->input('roomprice');
         $room->FutureLab_Str = $request->input('futurelab');
         $room->Room_status = 'Available';
+        
+        $room->Room_Pic = $filenametostore;
         $room ->save();
 
         return redirect('/rooms/create')->with('success', 'Room added');
@@ -98,6 +113,19 @@ class RoomController extends Controller
             'description' => 'required',
             'roomprice' => 'integer|required|min:0'
         ]);
+        if ($request->hasFile ('room_image')){
+            $filenameWhithtxt = $request->file ('room_image')-> getClientOriginalName(); 
+            // Get just filename
+            $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+            //get just ext
+            $extention= $request->file('room_image')->getClientOriginalExtension();
+            //Filename to store
+            $filenametostore = $filename.time().'.'.$extention; 
+            //upload image
+            $path = $request->file('room_image')->storeAs('public/room_image',$filenametostore);
+        } else {
+            $filenametostore='noimage.jpg';
+        }
 
         $room = Room::find($id);
         $room->RoomName = $request->input('roomname');

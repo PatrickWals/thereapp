@@ -29,10 +29,10 @@
             {{Form::select('futurelab',['1' => 'Food'
             ],null)}}
 
-        </div>
-            {{-- <div class="form-group">
+     </div>
+            <div class="form-group">
                 {{Form::file('room_image')}}
-            </div> --}}
+            </div>
     
         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}

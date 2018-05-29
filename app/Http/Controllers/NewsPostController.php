@@ -41,11 +41,27 @@ class NewsPostController extends Controller
             'title' => 'required|min:5' ,
             'body' => 'required'
         ]);   
+        if ($request->hasFile ('news_Pic')){
+            $filenameWhithtxt = $request->file ('news_Pic')-> getClientOriginalName(); 
+            // Get just filename
+            $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+            //get just ext
+            $extention= $request->file('news_Pic')->getClientOriginalExtension();
+            //Filename to store
+            $filenametostore = $filename.time().'.'.$extention; 
+            //upload image
+            $path = $request->file('news_Pic')->storeAs('public/news_Pic',$filenametostore);
+        } else {
+            $filenametostore='noimage.jpg';
+        }
         
         $newsposts = new NewsPost;
         $newsposts->title = $request->input('title');
         $newsposts->body = $request->input('body');
-        $newsposts->user_ID = Auth::user()->User_ID;
+    
+        $newsposts->user_ID = 1;
+        $newsposts->News_Pic= $filenametostore;
+        $newsposts->News_status ='nieuwsstatus';
         $newsposts->save();
 
         return redirect('/newsposts')->with('succes','News added');
@@ -88,10 +104,25 @@ class NewsPostController extends Controller
             'title' => 'required',
             'body' => 'required'
         ]);
+        if ($request->hasFile ('news_Pic')){
+            $filenameWhithtxt = $request->file ('news_Pic')-> getClientOriginalName(); 
+            // Get just filename
+            $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
+            //get just ext
+            $extention= $request->file('news_Pic')->getClientOriginalExtension();
+            //Filename to store
+            $filenametostore = $filename.time().'.'.$extention; 
+            //upload image
+            $path = $request->file('news_Pic')->storeAs('public/news_Pic',$filenametostore);
+        } else {
+            $filenametostore='noimage.jpg';
+        }
+        return $filenametostore;
 
         $newsposts = NewsPost::find($id);
         $newsposts->title = $request->input('title');
         $newsposts->body = $request->input('body');
+        $newsposts->News_Pic = $filenametostore;
         
         $newsposts->save();
 
