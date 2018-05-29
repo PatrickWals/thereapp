@@ -106,7 +106,12 @@ class ProfileController extends Controller
         $user->Phone = $request->input('phone');
         $user->Mobile = $request->input('mobile');
         $user->Email = $request->input('email');
+<<<<<<< HEAD
         //$user->Futurelab_Str = $request->input('futurelab');
+=======
+        $user->Futurelab_Str = $request->input('futurelab');
+        $user->Aboutme_Str = $request->input('aboutme');
+>>>>>>> AboutMe-Lisette
         
 
         $user->save();
