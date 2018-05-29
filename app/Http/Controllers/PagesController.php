@@ -17,4 +17,6 @@ class PagesController extends Controller
     public function search(){
         return view('pages.search');
     }
+
+    
 }

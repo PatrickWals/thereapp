@@ -36,6 +36,7 @@
                         {{Form::text('email', $user->Email, ['class' => 'form-control', 'placeholder' => ''])}}
                     </div>
 
+<<<<<<< HEAD
                     <div class="form-group">
                         {{Form::select('futurelab', ['Flab1' => 'Flab1', 'Flab2' => 'Flab2', 'Flab3' => 'Flab3', 'Flab4' => 'Flab4', 'Flab5' => 'Flab5', 'Flab6' => 'Flab6'], null, ['placeholder' => 'Kies een Future Lab'])}}
                     </div>
@@ -70,6 +71,16 @@
                         
                         
                     </div>
+=======
+                    {{-- <div class="form-group">
+                {{Form::label('body', 'Body')}}
+                {{Form::textarea('body', $user->LastName, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                    </div> --}}
+                    <div class="form-group">
+                         {{Form::file('profile_image')}}
+                    </div>
+                    
+>>>>>>> TagwaS2
             {{Form::hidden('_method','PUT')}}
             {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}

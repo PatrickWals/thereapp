@@ -20,7 +20,6 @@ class CreateRoomsTable extends Migration
             $table->string('Room_status');
             $table->string('Room_pic')->nullable();
             $table->longtext('Description');
-            $table->boolean('Availability');
             $table->string('FutureLab_Str');
             $table->timestamps();
         });
