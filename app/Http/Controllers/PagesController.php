@@ -3,16 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use App\User;
-
-class PagesController extends Controller
-{
-    
-    public function home(){
-        $users= User::all();
-        return view('pages.home',compact('users'));
-=======
 
 class PagesController extends Controller
 {
@@ -26,6 +16,5 @@ class PagesController extends Controller
 
     public function search(){
         return view('pages.search');
->>>>>>> reservationS2.1
     }
 }

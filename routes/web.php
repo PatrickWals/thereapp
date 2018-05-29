@@ -17,17 +17,7 @@ Route::get('/', 'PagesController@home');
 
 Route::get('/dashboard', 'DashboardController@index');
 
-<<<<<<< HEAD
 Route::get('/accesdenied', 'PagesController@accesdenied');
-=======
-Route::get('/', 'PagesController@home');
-
-Route::get('/dashboard', 'DashboardController@index');
-
-Route::get('/accesdenied',function(){
-    return view('pages.accesdenied');
-});
->>>>>>> reservationS2.1
 
 Route::resource('events','EventController');
 
