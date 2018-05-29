@@ -55,11 +55,12 @@ class ReservationController extends Controller
     {
        
         $this->validate($request,[
-            'startdate' => 'required',
-            'enddate' => 'required',
+            'startdate' => 'required|date',
+            'enddate' => 'required|date|after_or_equal:startdate',
             'room' => 'required',
             'remarks' => 'required'
         ]);
+        
         $room = Room::find($request->input('room'));
 
         $reservation = new Reservation;
@@ -125,5 +126,16 @@ class ReservationController extends Controller
         $reservation->delete();
 
         return redirect('/reservations')->with('success', 'Reservation Removed');
+    }
+
+    public function availroom(request $request, $id)
+    {
+        $this->validate($request,[
+            'startdate' => 'required|date',
+            'enddate' => 'required|date|after_or_equal:startdate'
+        ]);
+        
+        
+
     }
 }

@@ -96,7 +96,7 @@ class RoomController extends Controller
         $this->validate($request,[
             'roomname' => 'required',
             'description' => 'required',
-            'roomprice' => 'integer|required'
+            'roomprice' => 'integer|required|min:0'
         ]);
 
         $room = Room::find($id);
