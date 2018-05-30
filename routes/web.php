@@ -29,3 +29,10 @@ Route::resource('profile','ProfileController');
 
 Route::resource('rooms','RoomController');
 
+
+//Message Routes
+
+Route::get('/chat', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');
+
