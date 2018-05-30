@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Interest;
+use App\speciality;
 use App\Userinterest;
+use App\Userspeciality;
 use Auth;
 
 class ProfileController extends Controller
@@ -77,11 +79,11 @@ class ProfileController extends Controller
     {
         $user = User::whereUsername($username)->first();
         $interests = Interest::all();
-        
         $userinterests = Userinterest::where('User_ID', Auth::user()->User_ID)->get();
     
-        //return $userinterests;
-        return view('userprofile.edit', compact('user','interests','userinterests','checkUserinterest'));
+        $specialities = speciality::all();
+        $userspecialities = Userspeciality::where('User_ID', Auth::user()->User_ID)->get();
+        return view('userprofile.edit', compact('user','interests','userinterests','specialities','userspecialities'));
     }
 
     /**
@@ -118,9 +120,6 @@ class ProfileController extends Controller
     return $filenametostore;
 
         $interests = $request->input('interest');
-        //return $interests;
-
-
         $userinterest =  Userinterest::whereUser_id(Auth::user()->User_ID)->delete();
 
         foreach($interests as $interest)
@@ -130,6 +129,18 @@ class ProfileController extends Controller
             $userinterest->User_ID = Auth::user()->User_ID;
             $userinterest->Interest_ID = $interest;
             $userinterest->save();
+        }
+
+        $specialities = $request->input('speciality');
+        $userspeciality =  Userspeciality::whereUser_id(Auth::user()->User_ID)->delete();
+
+        foreach($specialities as $speciality)
+        {
+            $userspecialities =  new Userspeciality;
+
+            $userspeciality->User_ID = Auth::user()->User_ID;
+            $userspeciality->speciality_ID = $speciality;
+            $userspeciality->save();
         }
 
         $user = User::whereUsername($username)->first();
