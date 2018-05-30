@@ -13,7 +13,7 @@ class CreateUserspecialitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('userspecilities', function (Blueprint $table) {
+        Schema::create('userspecialities', function (Blueprint $table) {
             $table->integer('User_ID')->unsigned();
             $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');;
             $table->integer('Speciality_ID')->unsigned();

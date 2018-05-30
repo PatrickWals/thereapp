@@ -46,16 +46,19 @@
                     </div>
                         
                     <div class="form-group">
-
-                        {{-- @foreach($interests as $interest)
-                            {{Form::checkbox('interest[]', $interest->Interest_ID),false}}
+                        
+                        {{Form::label('interests', 'Mijn intresses')}}
+                        <br>
+                        @foreach($interests as $interest)
+                            {{Form::checkbox('interest[]', $interest->Interest_ID)}}
                             {{Form::label('interest[]', $interest->Interest_Name)}}
-                        @endforeach --}}
-                        @for($x = 0; $x < count($interests); $x++)
+                        @endforeach
+                        {{-- @for($x = 0; $x < count($interests); $x++)
                             
                         <input type="checkbox" id={{$x+1}} name = "interest[]" value= "{{$interests[$x]->Interest_ID}}" />
-                        @endfor
-                        
+                        <label for="interests[]"></label>
+                        @endfor --}}
+
                         @for($i = 0; $i < count($interests); $i++)
                             @for($j = 0; $j < count($userinterests); $j++)
                                 
@@ -70,14 +73,15 @@
                         
                         
                     </div>
-                    {{-- <div class="form-group">
-                {{Form::label('body', 'Body')}}
-                {{Form::textarea('body', $user->LastName, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
-                    </div> --}}
                     <div class="form-group">
-                         {{Form::file('profile_image')}}
+                        {{Form::label('specialities', 'Mijn specialiteiten')}}
+                        <br>
+                        @foreach($specialities as $speciality)
+                        
+                            {{Form::checkbox('speciality[]', $speciality->Speciality_ID)}}
+                            {{Form::label('speciality[]', $speciality->Speciality_Name)}}
+                        @endforeach
                     </div>
-                    
             {{Form::hidden('_method','PUT')}}
             {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
