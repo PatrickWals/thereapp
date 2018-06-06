@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Message;
 use Auth;
 
+//remember to use
+use App\Events\MessageSent;
+
 class ChatsController extends Controller
 {
     public function __construct()
@@ -15,17 +18,37 @@ class ChatsController extends Controller
     
     public function index()
     {
-        return 'worked';
+        return view('chats.chat') ;
     }
-
+    
+    /**
+     * Fetch all messages
+     *
+     * @return Message
+     */
     public function fetchMessages()
     {
-
+        return Message::with('user')->get();
     }
 
+
+    /**
+     * Persist message to database
+     *
+     * @param  Request $request
+     * @return Response
+     */       
     public function sendMessage()
     {
-        
+        $user = Auth::user();
+
+        $message = $user->messages()->create([
+          'message' => $request->input('message')
+        ]);
+      
+        broadcast(new MessageSent($user, $message))->toOthers();
+      
+        return ['status' => 'Message Sent!'];
     }
     
 }

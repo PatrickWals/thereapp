@@ -29,18 +29,18 @@ class User extends Authenticatable
     ];
 
     /**
- * Get the password for the user.
- *
- * @return string
- */
-public function getAuthPassword()
-{
-    return $this->Password;
-}
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->Password;
+    }
 
-public function messages()
-{
-  return $this->hasMany(Message::class);
-}
+    public function messages()
+    {
+    return $this->hasMany(Message::class);
+    }
     
 }
