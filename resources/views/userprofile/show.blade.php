@@ -16,7 +16,23 @@
                 <h5>E-mail adress: {{$user->Email}}</h5>
                 <h5>Future lab: {{$user->Futurelab_Str}}</h5>
                 <h5>About me: <br><br> {{$user->Aboutme_Str}}</h5>
+                <div class="form-group">
+                    <h5>Mijn intresses</h5>    
+                    
+                    @foreach($interests as $interest)
+                        
+                        {{Form::label('interest[]', $interest->Interest_Name)}}
 
+                    @endforeach
+                    <br>
+                    <h5>Mijn specialiteiten</h5>
+                    
+                    @foreach($specialities as $speciality)
+                    
+                        {{Form::label('speciality[]', $speciality->Speciality_Name)}}
+
+                    @endforeach
+                </div>
                 
                 @if(auth::user()->User_ID == $user->User_ID)
                 <a href="/profile/{{$user->Username}}/edit" class="btn btn-primary">Edit Profile</a>

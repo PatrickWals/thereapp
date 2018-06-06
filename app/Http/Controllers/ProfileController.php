@@ -65,8 +65,13 @@ class ProfileController extends Controller
     public function show($username)
     {
         $user = User::whereUsername($username)->first();
+        $interests = Interest::all();
+        $userinterests = Userinterest::where('User_ID', Auth::user()->User_ID)->get();
 
-        return view('userprofile.show', compact('user'));
+        $specialities = speciality::all();
+        $userspecialities = Userspeciality::where('User_ID', Auth::user()->User_ID)->get();
+
+        return view('userprofile.show', compact('user','interests','userinterests','specialities','userspecialities'));
     }
 
     /**
