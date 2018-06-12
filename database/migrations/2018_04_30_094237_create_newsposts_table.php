@@ -14,11 +14,12 @@ class CreateNewspostsTable extends Migration
     public function up()
     {
         Schema::create('newsposts', function (Blueprint $table) {
-            $table->increments('NewsPost_ID');
+            $table->increments('id');
             $table->integer('User_ID')->unsigned();
             $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');
             $table->string('Title');
             $table->longtext('Body');
+            $table->string('Futurelab')->nullable();
             $table->string('News_status');
             $table->string('News_Pic')->nullable();
             

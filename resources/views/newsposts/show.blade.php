@@ -8,11 +8,11 @@
         <a href="/newsposts" class="btn btn-primary">Go back</a>
         <div class="card">
             <div class="card-header">
-                <h3><b>{{$newspost->title}}</b></h3>
+                <h3><b>{{$newspost->Title}}</b></h3>
             </div>
 
             <div class="card-body">
-                {{$newspost->body}}
+                {{$newspost->Body}}
             </div>
             <small>Newspost Created at: {{$newspost->created_at}}</small>
         </div>          

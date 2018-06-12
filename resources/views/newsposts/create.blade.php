@@ -18,6 +18,14 @@
                 {{Form::label('body', 'Body')}}
                 {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
             </div>
+
+            <div class="form-group">
+                {{Form::label('futurelab','FutureLab')}}
+                {{Form::select('futurelab',['Flab1' => 'Flab1','Flab2' => 'Flab2',
+                'Flab3' => 'Flab3','Flab4' => 'Flab4','Flab5' => 'Flab5','Flab6' => 'Flab6'
+                ],null)}}
+            </div>  
+
             <div class="form-group">
                 {{Form::file('news_Pic')}}
             </div>

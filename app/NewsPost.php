@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Newspost extends Model
 {
-    //protected $primarykey = 'Newspost_ID';
+    protected $primarykey = 'NewsPost_ID';
+
 }

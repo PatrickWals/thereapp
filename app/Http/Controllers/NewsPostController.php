@@ -15,7 +15,9 @@ class NewsPostController extends Controller
      */
     public function index()
     {
+
         $newsposts = NewsPost::all();
+        
         return view('newsposts.index')->with('newsposts', $newsposts);
     }
 
@@ -55,14 +57,18 @@ class NewsPostController extends Controller
             $filenametostore='noimage.jpg';
         }
         
-        $newsposts = new NewsPost;
-        $newsposts->title = $request->input('title');
-        $newsposts->body = $request->input('body');
-    
-        $newsposts->user_ID = 1;
-        $newsposts->News_Pic= $filenametostore;
-        $newsposts->News_status ='nieuwsstatus';
-        $newsposts->save();
+
+        $newspost = new NewsPost;
+        $newspost->Title = $request->input('title');
+        $newspost->Body = $request->input('body');
+        $newspost->Futurelab = $request->input('futurelab');
+
+        $newspost->User_ID = auth::user()->User_ID;
+        $newspost->News_Pic= $filenametostore;
+
+        //nieuws status regelt of een newspost aan staat
+        $newspost->News_status ='open';
+        $newspost->save();
 
         return redirect('/newsposts')->with('succes','News added');
     }
@@ -75,8 +81,8 @@ class NewsPostController extends Controller
      */
     public function show($id)
     {
-        $newsposts = NewsPost::find($id);
-        return view('newsposts.show')->with('newspost',$newsposts);
+        $newspost = NewsPost::find($id);
+        return view('newsposts.show')->with('newspost',$newspost);
     }
 
     /**
@@ -119,12 +125,16 @@ class NewsPostController extends Controller
         }
         return $filenametostore;
 
-        $newsposts = NewsPost::find($id);
-        $newsposts->title = $request->input('title');
-        $newsposts->body = $request->input('body');
-        $newsposts->News_Pic = $filenametostore;
+        $newspost = NewsPost::find($id);
+        $newspost->Title = $request->input('title');
+        $newspost->Body = $request->input('body');
+
+        $newspost->Futurelab = $request->input('futurelab');
+
+        //$newspost->News_Status = $request->input('news_status');
+        $newspost->News_Pic = $filenametostore;
         
-        $newsposts->save();
+        $newspost->save();
 
         return redirect("/newsposts/".$id)->with('success', 'Post Updated');
     }
