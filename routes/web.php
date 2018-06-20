@@ -15,6 +15,8 @@ Auth::routes();
 
 Route::get('/', 'PagesController@home');
 
+Route::get('/admin','PagesController@adminpage');
+
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/accesdenied', 'PagesController@accesdenied');
