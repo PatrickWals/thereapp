@@ -128,11 +128,12 @@ class NewsPostController extends Controller
         $newspost = NewsPost::find($id);
         $newspost->Title = $request->input('title');
         $newspost->Body = $request->input('body');
-
         $newspost->Futurelab = $request->input('futurelab');
 
         //$newspost->News_Status = $request->input('news_status');
-        $newspost->News_Pic = $filenametostore;
+        if($filenametostore != 'noimage.jpg'){
+            $event->Event_Pic = $filenametostore;
+        }
         
         $newspost->save();
 

@@ -61,11 +61,10 @@ class RoomController extends Controller
 
         $room = new Room;
         $room->RoomName = $request->input('roomname');
-        $room->Availability = 0;
         $room->Description = $request->input('description');
         $room->RoomPrice = $request->input('roomprice');
         $room->FutureLab_Str = $request->input('futurelab');
-        $room->Room_status = 'Available';
+        $room->Room_status = $request->input('roomstatus');
         
         $room->Room_Pic = $filenametostore;
         $room ->save();
@@ -129,10 +128,10 @@ class RoomController extends Controller
 
         $room = Room::find($id);
         $room->RoomName = $request->input('roomname');
-        $room->Availability = 0;
         $room->Description = $request->input('description');
         $room->RoomPrice = $request->input('roomprice');
         $room->FutureLab_Str = $request->input('futurelab');
+        $room->Room_status = $request->input('roomstatus');
         $room ->save();
 
         return redirect('/rooms');

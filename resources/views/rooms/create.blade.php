@@ -28,11 +28,17 @@
             {{Form::label('futurelab','FutureLab')}}
             {{Form::select('futurelab',['1' => 'Food'
             ],null)}}
+         </div>
 
-     </div>
-            <div class="form-group">
-                {{Form::file('room_image')}}
-            </div>
+         <div class="form-group">
+            {{Form::label('roomstatus','Kamer Status')}}
+            {{Form::select('roomstatus',['Available' => 'Beschikbaar','Unavailable' => 'Niet Beschikbaar'
+            ],null)}}
+         </div>
+
+        <div class="form-group">
+            {{Form::file('room_image')}}
+        </div>
     
         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}

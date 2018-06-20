@@ -1,5 +1,6 @@
-@extends('_layouts.app')
+{{$date = date("Y-m-d")}}
 
+@extends('_layouts.app')
 
 @section('content')
     
@@ -10,10 +11,12 @@
             <a href="/dashboard" class="btn btn-primary">Go back</a>
 
             {!! Form::open(['action' => 'ReservationController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
                 <div class="form-group">
                     {{Form::label('startdate', 'Begin datum')}}
-                    {{Form::date('startdate', '', ['class' => 'form-control', 'placeholder' => ''])}}
+                    {{Form::date('startdate', '', ['class' => 'form-control', 'placeholder' => '','min' =>date("Y-m-d")])}}
                 </div>
+                
                 <div class="form-group">
                     {{Form::label('enddate', 'Eind datum')}}
                     {{Form::date('enddate', '', ['class' => 'form-control', 'placeholder' => ''])}}

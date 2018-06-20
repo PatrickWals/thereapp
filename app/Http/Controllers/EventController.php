@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Reservation;
+use App\Room;
 use Auth;
+
 
 class EventController extends Controller
 {
@@ -36,7 +39,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('events/create');
+        $rooms = Room::roomstatus('Available')->pluck('RoomName','Room_ID');
+        return view('events/create',compact('rooms'));
     }
 
     /**
@@ -48,7 +52,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|min:5' ,
+            'eventname' => 'required|min:5' ,
             'body' => 'required'
         ]);   
         if ($request->hasFile ('event_image')){
@@ -66,15 +70,16 @@ class EventController extends Controller
         }
         
         $event = new Event;
-        $event->Reservation_ID = 1;
-        $event->Eventname = 'eventname';
-        $event->Event_status ='eventstaus'; 
-        $event->Futurelab_Str= 2; 
-        $event->Owner_ID =1;
+        //$event->Reservation_ID = ;
+        $event->Eventname = $request->input('eventname');
+        $event->Description =$request->input('body');
+        $event->Futurelab_Str= $request->input('futurelab');
+        $event->Event_status = $request->input('eventstatus');
+        $event->Owner_ID = Auth::user()->User_ID;
         $event->Event_Pic =$filenametostore;
-        $event->Description ='eventstaus';
+        
         $event->save();
-
+    
         return redirect('/events')->with('succes','Event added');
     }
 
@@ -98,8 +103,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
+        $rooms = Room::roomstatus('Available')->pluck('RoomName','Room_ID');
         $event = Event::find($id);
-        return view('events.edit')->with('event',$event);
+        return view('events.edit',compact('rooms','event'));
     }
 
     /**
@@ -112,7 +118,7 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title' => 'required',
+            'eventname' => 'required',
             'body' => 'required'
         ]);
         if ($request->hasFile ('event_image')){
@@ -132,9 +138,13 @@ class EventController extends Controller
 
             
         $event = Event::find($id);
-        $event->title = $request->input('title');
-        $event->body = $request->input('body');
-        $event->Event_Pic = $filenametostore;
+        $event->Eventname = $request->input('eventname');
+        $event->Description = $request->input('body');
+        $event->Futurelab_Str = $request->input('futurelab');
+        if($filenametostore != 'noimage.jpg'){
+            $event->Event_Pic = $filenametostore;
+        }
+        $event->Event_status = $request->input('eventstatus');
         $event->save();
 
         return redirect("/events/".$id)->with('success', 'Post Updated');

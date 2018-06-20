@@ -10,14 +10,17 @@
             <a href="/dashboard" class="btn btn-primary">Go back</a>
 
             {!! Form::open(['action' => 'NewsPostController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
             <div class="form-group">
                 {{Form::label('title', 'Title')}}
                 {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
             </div>
+
             <div class="form-group">
                 {{Form::label('body', 'Body')}}
                 {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
             </div>
+
 
             <div class="form-group">
                 {{Form::label('futurelab','FutureLab')}}
@@ -27,8 +30,15 @@
             </div>  
 
             <div class="form-group">
+                {{Form::label('newsstatus','NieuwsPost Status')}}
+                {{Form::select('newsstatus',['Available' => 'Beschikbaar','Unavailable' => 'Niet Beschikbaar'
+                ],null)}}
+            </div>
+
+            <div class="form-group">
                 {{Form::file('news_Pic')}}
             </div>
+
             {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}
         </div>

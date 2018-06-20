@@ -122,7 +122,6 @@ class ProfileController extends Controller
     } else {
         $filenametostore='noimage.jpg';
     }
-    return $filenametostore;
 
         $interests = $request->input('interest');
         $userinterest =  Userinterest::whereUser_id(Auth::user()->User_ID)->delete();
@@ -156,7 +155,9 @@ class ProfileController extends Controller
         $user->Email = $request->input('email');
         //$user->Futurelab_Str = $request->input('futurelab');
         $user->Aboutme_Str = $request->input('aboutme');
-        $user->Profile_Pic = $filenametostore;
+        if($filenametostore != 'noimage.jpg'){
+            $event->Event_Pic = $filenametostore;
+        }
         
         $user->save();
 
