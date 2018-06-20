@@ -124,29 +124,37 @@ class ProfileController extends Controller
     }
 
         $interests = $request->input('interest');
-        $userinterest =  Userinterest::whereUser_id(Auth::user()->User_ID)->delete();
-
-        foreach($interests as $interest)
+        
+        if(!empty($interests))
         {
-            $userinterest =  new Userinterest;
+            $userinterest =  Userinterest::whereUser_id(Auth::user()->User_ID)->delete();
 
-            $userinterest->User_ID = Auth::user()->User_ID;
-            $userinterest->Interest_ID = $interest;
-            $userinterest->save();
+            foreach($interests as $interest)
+            {
+                $userinterest =  new Userinterest;
+    
+                $userinterest->User_ID = Auth::user()->User_ID;
+                $userinterest->Interest_ID = $interest;
+                $userinterest->save();
+            }
         }
 
         $specialities = $request->input('speciality');
-        $userspeciality =  Userspeciality::whereUser_id(Auth::user()->User_ID)->delete();
 
-        foreach($specialities as $speciality)
+        if(!empty($specialities))
         {
-            $userspecialities =  new Userspeciality;
+            $userspeciality =  Userspeciality::whereUser_id(Auth::user()->User_ID)->delete();
 
-            $userspeciality->User_ID = Auth::user()->User_ID;
-            $userspeciality->speciality_ID = $speciality;
-            $userspeciality->save();
+            foreach($specialities as $speciality)
+            {
+                $userspecialities =  new Userspeciality;
+    
+                $userspeciality->User_ID = Auth::user()->User_ID;
+                $userspeciality->speciality_ID = $speciality;
+                $userspeciality->save();
+            }
         }
-
+ 
         $user = User::whereUsername($username)->first();
         $user->Firstname = $request->input('firstname');
         $user->Lastname = $request->input('lastname');
