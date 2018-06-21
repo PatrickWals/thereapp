@@ -7,17 +7,17 @@
     <div class="row justify-content-center">
         
         <div class="col-md-8 ">
-            <a href="/dashboard" class="btn btn-primary">Go back</a>
+            <a href="/dashboard" class="btn btn-primary">Ga terug</a>
 
             {!! Form::open(['action' => 'NewsPostController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <div class="form-group">
-                {{Form::label('title', 'Title')}}
+                {{Form::label('title', 'Titel')}}
                 {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
             </div>
 
             <div class="form-group">
-                {{Form::label('body', 'Body')}}
+                {{Form::label('body', 'Omschrijving')}}
                 {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
             </div>
 

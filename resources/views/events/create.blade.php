@@ -5,23 +5,23 @@
 
 @section('content')
     
-<h1>Event Creator</h1>
+<h1>Evenement Maker</h1>
     <div class="row justify-content-center">
         
         <div class="col-md-8 ">
-            <a href="/dashboard" class="btn btn-primary">Go back</a>
+            <a href="/dashboard" class="btn btn-primary">Ga terug</a>
 
             {!! Form::open(['action' => 'EventController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <h3>Event Details</h3>
 
             <div class="form-group">
-                {{Form::label('eventname', 'EventNaam: ')}}
+                {{Form::label('eventname', 'Evenement naam: ')}}
                 {{Form::text('eventname', '', ['class' => 'form-control', 'placeholder' => 'EventNaam'])}}
             </div>
 
             <div class="form-group">
-                {{Form::label('body', 'Event beschrijving: ')}}
+                {{Form::label('body', 'Evenement beschrijving: ')}}
                 {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Beschrijving van het Event'])}}
             </div>
 
@@ -47,7 +47,7 @@
 
             <br><br>
             <div class="form-group">
-                {{Form::label('eventstatus','Event Status')}}
+                {{Form::label('eventstatus','Evenement Status')}}
                 {{Form::select('eventstatus',['open'=> 'Open','Closed' => 'Gesloten', 'Unavailable'=>'niet beschikbaar'
                 ],null)}}
             </div>

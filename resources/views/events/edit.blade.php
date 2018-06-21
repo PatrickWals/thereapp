@@ -4,21 +4,21 @@
 
 @if($event->user_ID ==Auth::user()->id)
 
-<h1>Post Editor</h1>
+<h1>Evenement Editor</h1>
 
     <div class="row justify-content-center">
         
         <div class="col-md-8 ">
-            <a href="/events/{{$event->Event_ID}}" class="btn btn-primary">Go back</a>
+            <a href="/events/{{$event->Event_ID}}" class="btn btn-primary">Ga terug</a>
             {!! Form::open(['action' => ['EventController@update', $event->Event_ID], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <div class="form-group">
-                {{Form::label('eventname', 'Eventname')}}
+                {{Form::label('eventname', 'Evenement naam: ')}}
                 {{Form::text('eventname', $event->Eventname, ['class' => 'form-control', 'placeholder' => 'Title'])}}
             </div>
 
             <div class="form-group">
-                {{Form::label('body', 'Body')}}
+                {{Form::label('body', 'omschrijving')}}
                 {{Form::textarea('body', $event->Description, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
             </div>
 
@@ -43,7 +43,7 @@
             
             <br><br>
             <div class="form-group">
-                {{Form::label('eventstatus','Event Status')}}
+                {{Form::label('eventstatus','Evenement status')}}
                 {{Form::select('eventstatus',['open'=> 'Open','Closed' => 'Gesloten', 'Unavailable'=>'niet beschikbaar'
                 ],$event->Event_status)}}
             </div>

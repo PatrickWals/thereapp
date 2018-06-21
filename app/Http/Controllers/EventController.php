@@ -69,15 +69,27 @@ class EventController extends Controller
             $filenametostore='noimage.jpg';
         }
         
+        $reservation = new Reservation;
+        $reservation->User_ID = Auth::user()->User_ID;
+        $reservation->Room_ID = $request->input('room');
+        $reservation->Start_date = $request->input('eventdate');
+        $reservation->End_date = $request->input('eventdate');
+        $reservation->PriceReservation = 0;
+        $reservation->Reservation_status = 'Booked';
+        $reservation->Reservation_remarks = $request->input('eventname');
+        
+        $reservation->save();
+
+
         $event = new Event;
-        //$event->Reservation_ID = ;
+        $event->Reservation_ID = $reservation->Reservation_ID;
         $event->Eventname = $request->input('eventname');
         $event->Description =$request->input('body');
         $event->Futurelab_Str= $request->input('futurelab');
         $event->Event_status = $request->input('eventstatus');
         $event->Owner_ID = Auth::user()->User_ID;
         $event->Event_Pic =$filenametostore;
-        
+
         $event->save();
     
         return redirect('/events')->with('succes','Event added');
@@ -158,7 +170,11 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
+
         $event = Event::find($id);
+        $reservation = Reservation::find($event->Reservation_ID);
+        $reservation->Reservation_status = 'canceled'; 
+        $reservation->save();
 
         $event->delete();
         return redirect('/events')->with('success', 'Post Removed');
