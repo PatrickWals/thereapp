@@ -15,11 +15,13 @@ Auth::routes();
 
 Route::get('/', 'PagesController@home');
 
-Route::get('/admin','PagesController@adminpage');
+Route::get('/admin','PagesController@adminPage');
+
+Route::get('/accesdenied', 'PagesController@accesDenied');
+//this route enables adding interests and specialities to the database
+Route::post('pages', 'PagesController@addData');
 
 Route::get('/dashboard', 'DashboardController@index');
-
-Route::get('/accesdenied', 'PagesController@accesdenied');
 
 Route::resource('events','EventController');
 
@@ -32,9 +34,14 @@ Route::resource('profile','ProfileController');
 Route::resource('rooms','RoomController');
 
 
+
+
+
+
+
 //Message Routes
 
-Route::get('/chat', 'ChatsController@index');
-Route::get('messages', 'ChatsController@fetchMessages');
-Route::post('messages', 'ChatsController@sendMessage');
+// Route::get('/chat', 'ChatsController@index');
+// Route::get('messages', 'ChatsController@fetchMessages');
+// Route::post('messages', 'ChatsController@sendMessage');
 
