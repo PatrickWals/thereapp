@@ -33,9 +33,9 @@
 
                     @endforeach
                 </div>
-                
+        
                 @if(auth::user()->User_ID == $user->User_ID)
-                <a href="/profile/{{$user->Username}}/edit" class="btn btn-primary">Edit Profile</a>
+                <a href="/profile/{{$user->Username}}/edit" class="btn btn-primary">bewerk profiel</a>
                 @endif
             </div>      
         </div>

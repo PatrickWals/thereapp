@@ -4,6 +4,7 @@
 @section('content')
 
 <h1>Kamers</h1>
+<a href="/dashboard" class="btn btn-primary">Ga terug</a>
 
 <div class="row justify-content-center">
     <div class="col-md-8">

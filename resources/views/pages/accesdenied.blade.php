@@ -49,7 +49,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
-                    You do not have Persmission to acces this content<br>
+                    Je hebt niet de vereiste rechten<br>
                     <a href="/" class="btn btn-primary">Return</a>           
                 </div>
             </div>

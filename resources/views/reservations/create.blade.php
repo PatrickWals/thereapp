@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         
         <div class="col-md-8 ">
-            <a href="/dashboard" class="btn btn-primary">Go back</a>
+            <a href="/dashboard" class="btn btn-primary">Ga terug</a>
 
             {!! Form::open(['action' => 'ReservationController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 

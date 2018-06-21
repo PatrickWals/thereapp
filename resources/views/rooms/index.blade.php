@@ -21,7 +21,7 @@
       
     @endforeach
 @else
-    <p>Op dit moment is er geen nieuws</p>
+    <p>er zijn op dit moment geen kamers aangemaakt</p>
 @endif
 
 @endsection

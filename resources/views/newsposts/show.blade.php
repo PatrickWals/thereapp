@@ -14,7 +14,7 @@
             <div class="card-body">
                 {{$newspost->Body}}
             </div>
-            <small>Newspost Created at: {{$newspost->created_at}}</small>
+            <small>Nieuwsbericht gemaakt op: {{$newspost->created_at}}</small>
         </div>          
         @if(!Auth::guest())
             @if($newspost->user_ID == Auth::user()->id)   

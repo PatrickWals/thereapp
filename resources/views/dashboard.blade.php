@@ -16,21 +16,17 @@
                     Welkom {{Auth::user()->name}}
                     <ul>
                         <li>
-                            <a href="events/create">Create Event</a>
-                           
+                            <a href="events/create">Maak een evenement</a>
                         </li>
                         <li>
-                            <a href="newsposts/create">Create newspost</a>
+                            <a href="newsposts/create">Maak een nieuwsbericht</a>
                         </li>
                         <li>
-                            <a href="reservations">List Reservations</a>
+                            <a href="rooms/create">Maak een Ruimte</a>
                         </li>
                         <li>
                             <a href="rooms">lijst ruimtes</a>
                         </li>
-                        <li>
-                            <a href="rooms/create">Create Room</a>
-                        </li> 
                         <li>
                             <a href="admin">Admin Pagina</a>    
                         </li>                       

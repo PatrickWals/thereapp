@@ -17,8 +17,8 @@
             </div>
 
             <div class="form-group">
-                {{Form::label('body', 'Omschrijving')}}
-                {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                {{Form::label('body', 'Nieuwsbericht')}}
+                {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => ''])}}
             </div>
 
 
@@ -30,7 +30,7 @@
             </div>  
 
             <div class="form-group">
-                {{Form::label('newsstatus','NieuwsPost Status')}}
+                {{Form::label('newsstatus','Nieuwsbericht status')}}
                 {{Form::select('newsstatus',['Available' => 'Beschikbaar','Unavailable' => 'Niet Beschikbaar'
                 ],null)}}
             </div>

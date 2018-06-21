@@ -4,10 +4,6 @@
 @section('content')
 
 
-
-
-
-
 @if(count($events)>0)
     <div class="container">
         <h1>Events</h1>

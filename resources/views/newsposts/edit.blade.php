@@ -6,20 +6,20 @@
     
 
 @if($newspost->user_ID ==Auth::user()->id)
-<h1>Newspost Editor</h1>
+<h1>Nieuwsbericht bewerken</h1>
     <div class="row justify-content-center">
         
         <div class="col-md-8 ">
-            <a href="/newsposts/{{$newspost->id}}" class="btn btn-primary">Go back</a>
+            <a href="/newsposts/{{$newspost->id}}" class="btn btn-primary">ga terug</a>
             {!! Form::open(['action' => ['NewsPostController@update', $newspost->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <div class="form-group">
-                {{Form::label('title', 'Title')}}
+                {{Form::label('title', 'Titel')}}
                 {{Form::text('title', $newspost->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
             </div>
 
             <div class="form-group">
-                {{Form::label('body', 'Body')}}
+                {{Form::label('body', 'Nieuwsbericht:')}}
                 {{Form::textarea('body', $newspost->body, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
             </div>
 
@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-group">
-                {{Form::label('newsstatus','NieuwsPost Status')}}
+                {{Form::label('newsstatus','Nieuwsbericht status')}}
                 {{Form::select('newsstatus',['Available' => 'Beschikbaar','Unavailable' => 'Niet Beschikbaar'
                 ],$newspost->News_status)}}
             </div>
