@@ -16,15 +16,5 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav flex-column mb-2">
-            {{-- @if(count($users)>0)
-                @foreach($users as $user)
-                    <div class="container ">
-                        <h3><a href="/profile/{{$user->Username}}">{{$user->Firstname}} {{$user->Lastname}}</a></h3>
-                    </div>
-                @endforeach
-            @else
-            @endif --}}
-        </ul>
     </div>
 </nav>

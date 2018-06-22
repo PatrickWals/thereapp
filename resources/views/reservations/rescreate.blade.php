@@ -20,10 +20,9 @@
                     {{Form::date('enddate', '', ['class' => 'form-control', 'placeholder' => ''])}}
                 </div>
                 
-
-                {{-- <div class="form-group">
+                <div class="form-group">
                     {{Form::select('room', $rooms, null, ['placeholder' => 'Pick a Room...'])}}
-                </div> --}}
+                </div>
 
                 {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}

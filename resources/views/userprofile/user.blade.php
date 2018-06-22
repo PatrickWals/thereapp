@@ -17,7 +17,6 @@
                 @if(auth::user()->User_ID == $user->User_ID)
                 <a href="/profile/edit/{{$user->Firstname}}" class="btn btn-primary">verander profiel</a>
                 @endif
-                {{-- {{Form:: Edit profile('/profile/edit', ['class'=>'btn btn-primary'])}} --}}
             </div>      
         </div>
     </div>

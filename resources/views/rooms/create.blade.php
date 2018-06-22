@@ -41,7 +41,7 @@
             {{Form::file('room_image')}}
         </div>
     
-        {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+        {{Form::submit('Opslaan', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
     </div>
 </div>

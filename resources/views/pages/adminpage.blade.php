@@ -19,7 +19,7 @@
                         {{Form::label('special','Specialiteit' )}}
                         {{Form::radio('Picker', 'Speciality', false)}}
                 
-                        {{Form::submit('Specialiteiten toevoegen', ['class'=>'btn btn-primary float-right'])}}
+                        {{Form::submit('Toevoegen', ['class'=>'btn btn-primary float-right'])}}
 
                     </div>
                 {!! Form::close() !!}

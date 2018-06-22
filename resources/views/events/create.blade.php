@@ -39,7 +39,6 @@
 
             <h3>Datum en plaats</h3>
             
-
             <div class="form-group">
                 {{Form::label('eventdate', 'Datum: ')}}
                 {{Form::date('eventdate', '', ['class' => 'form-control', 'placeholder' => '','min' =>date("Y-m-d")])}}
@@ -61,7 +60,7 @@
                 {{Form::file('event_image')}}
             </div> 
 
-            {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+            {{Form::submit('Opslaan', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
         </div>
     </div>

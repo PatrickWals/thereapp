@@ -18,7 +18,7 @@
         </div>          
         @if(!Auth::guest())
             @if($event->user_ID == Auth::user()->id)   
-                <a href="/events/{{$event->Event_ID}}/edit" class="btn btn-primary float-left">aanpassen</a>
+                <a href="/events/{{$event->Event_ID}}/edit" class="btn btn-primary float-left">Aanpassen</a>
 
                 {!!Form::open(['action' => ['EventController@destroy', $event->Event_ID], 'method' => 'POST', 'class' => 'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}

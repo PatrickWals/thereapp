@@ -38,8 +38,6 @@
             ],$room->Room_status)}}
         </div>
 
-
-
         <div class="form-group">
             {{Form::file('room_image')}}
         </div>
@@ -48,13 +46,11 @@
         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
         
-        {{-- Delete Button --}}
         {!!Form::open(['action' => ['RoomController@destroy', $room->Room_ID], 'method' => 'POST', 'class' => 'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}
         {{Form::submit('Delete', ['class' => 'btn btn-danger float-right'])}}
         {!!Form::close()!!}
-
-    
+   
     </div>
 </div>
 

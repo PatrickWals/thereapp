@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-group">
-                {{Form::label('eventlink', 'Evenement link: ')}}
+                {{Form::label('eventlink', 'Evenement link ')}}
                 {{Form::text('eventlink', '', ['class' => 'form-control', 'placeholder' => 'Evenement link'])}}
             </div>
 
@@ -37,12 +37,12 @@
             <h3>Datum en plaats</h3>
             
             <div class="form-group">
-                {{Form::label('eventdate', 'Datum: ')}}
+                {{Form::label('eventdate', 'Datum ')}}
                 {{Form::date('eventdate','', ['class' => 'form-control', 'placeholder' => '','min' =>date("Y-m-d")])}}
             </div>
             
             <div class="form-group">
-                {{Form::label('room','Plaats: ')}}
+                {{Form::label('room','Plaats ')}}
                 {{Form::select('room', $rooms, null, ['placeholder' => 'Pick a Room...'])}}
             </div>
             
@@ -58,7 +58,7 @@
             </div>
             
             {{Form::hidden('_method','PUT')}}
-            {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+            {{Form::submit('Opslaan', ['class'=>'btn btn-primary'])}}
             {!! Form::close() !!}
         </div>
     </div>
@@ -69,7 +69,7 @@
         window.location.replace("/accesdenied");
     }
     
-    alert("You don't have the required permissions");
+    alert("Je hebt niet de benodigde rechten");
     redirect();   
 </script>
 

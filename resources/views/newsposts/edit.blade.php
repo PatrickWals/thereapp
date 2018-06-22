@@ -1,16 +1,13 @@
 @extends('_layouts.app')
 
-
-
 @section('content')
-    
 
 @if($newspost->user_ID ==Auth::user()->id)
 <h1>Nieuwsbericht bewerken</h1>
     <div class="row justify-content-center">
         
         <div class="col-md-8 ">
-            <a href="/newsposts/{{$newspost->id}}" class="btn btn-primary">ga terug</a>
+            <a href="/newsposts/{{$newspost->id}}" class="btn btn-primary">Ga terug</a>
             {!! Form::open(['action' => ['NewsPostController@update', $newspost->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <div class="form-group">
@@ -46,16 +43,14 @@
         </div>
     </div>
 @else
-    <h1 class="title center">Acces Denied You will be redirected</h1>
+    <h1 class="title center">Toegang geweigerd je wordt terug gestuurd</h1>
 
 <script>
-    
-    function redirect(){
-        
+    function redirect()
+    {    
         window.location.replace("/accesdenied");
     }
-    redirect();
-    
+    redirect();    
 </script>
 
 @endif

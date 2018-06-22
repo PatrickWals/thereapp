@@ -1,6 +1,5 @@
 @extends('_layouts.app')
 
-
 @section('content')
 
 <div class="row justify-content-center">
@@ -18,7 +17,7 @@
         </div>          
         @if(!Auth::guest())
             @if($newspost->user_ID == Auth::user()->id)   
-                <a href="/newsposts/{{$newspost->id}}/edit" class="btn btn-primary float-left">Edit</a>
+                <a href="/newsposts/{{$newspost->id}}/edit" class="btn btn-primary float-left">Aanpassen</a>
 
                 {!!Form::open(['action' => ['NewsPostController@destroy', $newspost->id], 'method' => 'POST', 'class' => 'float-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}

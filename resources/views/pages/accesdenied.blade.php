@@ -50,7 +50,7 @@
             <div class="content">
                 <div class="title">
                     Je hebt niet de vereiste rechten<br>
-                    <a href="/" class="btn btn-primary">Return</a>           
+                    <a href="/" class="btn btn-primary">Terug</a>           
                 </div>
             </div>
         </div>

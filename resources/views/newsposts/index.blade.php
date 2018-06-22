@@ -5,11 +5,6 @@
 
 <div class="container">
     <h1>Nieuws</h1>
-    {{-- <div class="form-group float-right">
-        {{Form::select('futurelab',['Flab1' => 'Flab1','Flab2' => 'Flab2',
-        'Flab3' => 'Flab3','Flab4' => 'Flab4','Flab5' => 'Flab5','Flab6' => 'Flab6'
-        ],null,['class'=>'float-right'])}}
-    </div> --}}
 </div>
 <div class="container">
     @if(count($newsposts)>0)
@@ -20,7 +15,7 @@
         </div>
     @endforeach
     @else
-        <p>Op dit moment is er geen nieuws</p>
+        <p>Op dit moment is er geen nieuws.</p>
     @endif
 </div>
 
