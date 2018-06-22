@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Interest;
 use App\Speciality;
+use App\User;
 
 
 class PagesController extends Controller
@@ -64,6 +65,13 @@ class PagesController extends Controller
 
         return redirect('/admin')->with('succes', 'added');
 
+    }
+
+    public function registeredUsers()
+    {
+        $users = User::orderBy('Username', 'asc')->get();
+        
+        return view('pages.registeredusers',compact('users'));
     }
     
 }

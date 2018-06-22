@@ -10,8 +10,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li><a href="/events" class="nav-link">Events</a></li>
-                <li><a href="/newsposts" class="nav-link">News</a></li>
+                <li><a href="/events" class="nav-link">Evenevementen</a></li>
+                <li><a href="/newsposts" class="nav-link">Nieuws</a></li>
+                <li><a href="/allusers" class="nav-link">Gebruikers</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

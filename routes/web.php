@@ -17,6 +17,8 @@ Route::get('/', 'PagesController@home');
 
 Route::get('/admin','PagesController@adminPage');
 
+Route::get('/allusers', 'PagesController@registeredUsers');
+
 Route::get('/accesdenied', 'PagesController@accesDenied');
 //this route enables adding interests and specialities to the database
 Route::post('pages', 'PagesController@addData');
@@ -24,6 +26,7 @@ Route::post('pages', 'PagesController@addData');
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::resource('events','EventController');
+Route::Post('events','EventController@joinEvent');
 
 Route::resource('newsposts','NewsPostController');
 

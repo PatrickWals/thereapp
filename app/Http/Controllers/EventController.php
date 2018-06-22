@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Userevent;
 use App\Reservation;
 use App\Room;
 use Auth;
@@ -178,5 +179,18 @@ class EventController extends Controller
 
         $event->delete();
         return redirect('/events')->with('success', 'Post Removed');
+    }
+
+    public function joinEvent(Request $request)
+    {
+        
+        $userevent = new Userevent;
+
+        $userevent->User_ID = Auth::user()->User_ID;
+        $userevent->Event_ID = $request->input('Event_ID');
+
+        $userevent->save();
+
+        return redirect("/events/")->with('succes', 'U bent aangemeld');
     }
 }

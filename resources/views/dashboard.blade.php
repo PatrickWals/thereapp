@@ -36,7 +36,7 @@
         </div>
     </div>
 </div>
-@if(count($users)>0)
+{{-- @if(count($users)>0)
     <h4>Online gebruikers:</h4>
     @foreach($users as $user)
         @if($user->Status_Str == "Online")
@@ -54,6 +54,6 @@
         @endif
     @endforeach
 @else
-@endif
+@endif --}}
 
 @endsection

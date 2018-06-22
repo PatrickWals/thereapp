@@ -24,6 +24,12 @@
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                 {!!Form::close()!!}   
+
+                {!!Form::open(['action' => ['EventController@joinEvent', $event->Event_ID], 'method' => 'POST', 'class' => 'float-right'])!!}
+                {{Form::hidden('Event_ID', $event->Event_ID)}}
+                {{Form::submit('meld aan', ['class' => 'btn btn-primary'])}}
+                {!!Form::close()!!}   
+
             @endif
         @endif
     </div>
