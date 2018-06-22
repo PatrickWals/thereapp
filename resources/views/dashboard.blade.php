@@ -25,8 +25,11 @@
                             <a href="rooms/create">Maak een Ruimte</a>
                         </li>
                         <li>
-                            <a href="rooms">lijst ruimtes</a>
-                        </li>
+                            <a href="rooms/create">Ruimte toevoegen</a>    
+                        </li> 
+                        <li>
+                            <a href="rooms">Lijst ruimtes</a>
+                        </li>                      
                         <li>
                             <a href="admin">Admin Pagina</a>    
                         </li>                       

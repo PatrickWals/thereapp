@@ -26,7 +26,6 @@
                 {!!Form::close()!!}   
 
                 <a href={{$event->Event_link}} class="btn btn-primary float-right">Meld aan</a>
-                
             @endif
         @endif
     </div>

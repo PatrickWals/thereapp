@@ -135,7 +135,9 @@ class EventController extends Controller
     {
         $this->validate($request,[
             'eventname' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'eventlink' => 'string|nullable',
+            'event_image' => 'image|nullable|max:1999'
         ]);
         if ($request->hasFile ('event_image')){
             $filenameWhithtxt = $request->file ('event_image')-> getClientOriginalName(); 
@@ -152,7 +154,7 @@ class EventController extends Controller
         }
 
 
-            
+        
         $event = Event::find($id);
         $event->Eventname = $request->input('eventname');
         $event->Description = $request->input('body');
