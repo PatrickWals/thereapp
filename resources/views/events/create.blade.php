@@ -17,12 +17,17 @@
 
             <div class="form-group">
                 {{Form::label('eventname', 'Evenement naam: ')}}
-                {{Form::text('eventname', '', ['class' => 'form-control', 'placeholder' => 'EventNaam'])}}
+                {{Form::text('eventname', '', ['class' => 'form-control', 'placeholder' => 'Event naam'])}}
             </div>
 
             <div class="form-group">
                 {{Form::label('body', 'Evenement beschrijving: ')}}
                 {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Beschrijving van het Event'])}}
+            </div>
+
+            <div class="form-group">
+                {{Form::label('eventlink', 'Evenement link: ')}}
+                {{Form::text('eventlink', '', ['class' => 'form-control', 'placeholder' => 'Event link'])}}
             </div>
 
             <div class="form-group">

@@ -26,7 +26,6 @@ Route::post('pages', 'PagesController@addData');
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::resource('events','EventController');
-Route::Post('events','EventController@joinEvent');
 
 Route::resource('newsposts','NewsPostController');
 

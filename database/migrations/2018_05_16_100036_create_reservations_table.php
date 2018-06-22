@@ -23,7 +23,7 @@ class CreateReservationsTable extends Migration
             $table->date('End_date');
             $table->float('PriceReservation');
             $table->string('Reservation_status');
-            $table->longtext('Reservation_remarks');
+            $table->longtext('Reservation_remarks')->nullable();
 
             $table->timestamps();
         });

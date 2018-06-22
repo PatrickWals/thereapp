@@ -25,11 +25,8 @@
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                 {!!Form::close()!!}   
 
-                {!!Form::open(['action' => ['EventController@joinEvent', $event->Event_ID], 'method' => 'POST', 'class' => 'float-right'])!!}
-                {{Form::hidden('Event_ID', $event->Event_ID)}}
-                {{Form::submit('meld aan', ['class' => 'btn btn-primary'])}}
-                {!!Form::close()!!}   
-
+                <a href={{$event->Event_link}} class="btn btn-primary float-right">Meld aan</a>
+                
             @endif
         @endif
     </div>

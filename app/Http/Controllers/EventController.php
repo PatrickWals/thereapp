@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Userevent;
+use App\User;
 use App\Reservation;
 use App\Room;
 use Auth;
@@ -88,6 +89,7 @@ class EventController extends Controller
         $event->Description =$request->input('body');
         $event->Futurelab_Str= $request->input('futurelab');
         $event->Event_status = $request->input('eventstatus');
+        $event->Event_link = $request->input('eventlink');
         $event->Owner_ID = Auth::user()->User_ID;
         $event->Event_Pic =$filenametostore;
 
@@ -104,8 +106,9 @@ class EventController extends Controller
      */
     public function show($id)
     {
+        $userevent = Userevent::Where('Even_ID', $id);
         $event = Event::find($id);
-        return view('events.show')->with('event',$event);
+        return view('events.show',compact('event', 'userevent'));
     }
 
     /**
@@ -154,6 +157,7 @@ class EventController extends Controller
         $event->Eventname = $request->input('eventname');
         $event->Description = $request->input('body');
         $event->Futurelab_Str = $request->input('futurelab');
+        $event->Event_link = $request->input('eventlink');
         if($filenametostore != 'noimage.jpg'){
             $event->Event_Pic = $filenametostore;
         }
@@ -192,5 +196,15 @@ class EventController extends Controller
         $userevent->save();
 
         return redirect("/events/")->with('succes', 'U bent aangemeld');
+    }
+
+    public function indexUserEvent(Request $request)
+    {
+
+        $userevent = Userevent::find($request->input('Event_ID'));
+        $event = Event::find($request->input('Event_ID'));
+        $user = user::all();
+
+        return view('events.indexUserEvent', compact('userevent', 'event', 'user'));
     }
 }

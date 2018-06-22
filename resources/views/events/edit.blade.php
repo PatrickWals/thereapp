@@ -13,13 +13,18 @@
             {!! Form::open(['action' => ['EventController@update', $event->Event_ID], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <div class="form-group">
-                {{Form::label('eventname', 'Evenement naam: ')}}
-                {{Form::text('eventname', $event->Eventname, ['class' => 'form-control', 'placeholder' => 'Title'])}}
+                {{Form::label('evenement naam: ', 'Evenement naam: ')}}
+                {{Form::text('eventname', $event->Eventname, ['class' => 'form-control', 'placeholder' => 'Evenement naam'])}}
             </div>
 
             <div class="form-group">
-                {{Form::label('body', 'omschrijving')}}
-                {{Form::textarea('body', $event->Description, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                {{Form::label('Omschrijving', 'omschrijving')}}
+                {{Form::textarea('body', $event->Description, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'omschrijving'])}}
+            </div>
+
+            <div class="form-group">
+                {{Form::label('eventlink', 'Evenement link: ')}}
+                {{Form::text('eventlink', '', ['class' => 'form-control', 'placeholder' => 'Evenement link'])}}
             </div>
 
             <div class="form-group">

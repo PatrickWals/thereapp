@@ -16,10 +16,10 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('Event_ID');
 
-            $table->integer('Reservation_ID')->unsinged();
-            $table->foreign('Reservation_ID')->references('Reservation_ID')->on('reservations')->onDelete('cascade');
+            $table->integer('Reservation_ID');
             $table->string('Eventname');
             $table->longtext('Description');
+            $table->string('Event_link')->nullable();
             $table->string('Event_status');
             $table->string('Event_pic')->nullable();
             $table->string('Futurelab_Str');
