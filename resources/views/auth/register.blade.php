@@ -14,7 +14,7 @@
 
 
                         <div class="form-group row">
-                                <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('FirstName') }}</label>
+                                <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Voornaam') }}</label>
     
                                 <div class="col-md-6">
                                     <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required autofocus>
@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="form-group row">
-                                    <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+                                    <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Achternaam') }}</label>
         
                                     <div class="col-md-6">
                                         <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required autofocus>
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Wachtwoord') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Herhaal wachtwoord') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -82,7 +82,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registreer') }}
                                 </button>
                             </div>
                         </div>

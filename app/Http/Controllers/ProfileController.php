@@ -65,6 +65,7 @@ class ProfileController extends Controller
     public function show($username)
     {
         $user = User::whereUsername($username)->first();
+        //gets all interests and specialities and sends it to the "userrprofile/show" page.
         $interests = Interest::all();
         $userinterests = Userinterest::where('User_ID', Auth::user()->User_ID)->get();
 
@@ -100,6 +101,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $username)
     {
+        //validate the input given by user.
         $this->validate($request,[
             'firstname' => 'required',
             'lastname' => 'required',
@@ -124,15 +126,16 @@ class ProfileController extends Controller
     }
 
         $interests = $request->input('interest');
-        
+        //if interest array is not empty
         if(!empty($interests))
         {
+            //clears the interest data for current user
             $userinterest =  Userinterest::whereUser_id(Auth::user()->User_ID)->delete();
 
             foreach($interests as $interest)
             {
                 $userinterest =  new Userinterest;
-    
+                //checks current user and interest to save in userinterest table
                 $userinterest->User_ID = Auth::user()->User_ID;
                 $userinterest->Interest_ID = $interest;
                 $userinterest->save();
@@ -140,28 +143,30 @@ class ProfileController extends Controller
         }
 
         $specialities = $request->input('speciality');
-
+        
+        //if interest array is not empty
         if(!empty($specialities))
         {
+            //clears the speciality data for current user
             $userspeciality =  Userspeciality::whereUser_id(Auth::user()->User_ID)->delete();
 
             foreach($specialities as $speciality)
             {
                 $userspecialities =  new Userspeciality;
-    
+                //checks current user and speciality to save in userspeciality table
                 $userspeciality->User_ID = Auth::user()->User_ID;
                 $userspeciality->speciality_ID = $speciality;
                 $userspeciality->save();
             }
         }
- 
+        //Requests userprofiledata and updates the changes made by user.
         $user = User::whereUsername($username)->first();
         $user->Firstname = $request->input('firstname');
         $user->Lastname = $request->input('lastname');
         $user->Phone = $request->input('phone');
         $user->Mobile = $request->input('mobile');
         $user->Email = $request->input('email');
-        //$user->Futurelab_Str = $request->input('futurelab');
+        $user->Futurelab_Str = $request->input('futurelab');
         $user->Aboutme_Str = $request->input('aboutme');
         if($filenametostore != 'noimage.jpg'){
             $event->Event_Pic = $filenametostore;

@@ -25,7 +25,6 @@ class NewsPostController extends Controller
      */
     public function index()
     {
-
         $newsposts = NewsPost::all();
         
         return view('newsposts.index')->with('newsposts', $newsposts);
@@ -55,13 +54,13 @@ class NewsPostController extends Controller
         ]);   
         if ($request->hasFile ('news_Pic')){
             $filenameWhithtxt = $request->file ('news_Pic')-> getClientOriginalName(); 
-            // Get just filename
+            //Get just filename
             $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
-            //get just ext
+            //Get just ext
             $extention= $request->file('news_Pic')->getClientOriginalExtension();
             //Filename to store
             $filenametostore = $filename.time().'.'.$extention; 
-            //upload image
+            //Upload image
             $path = $request->file('news_Pic')->storeAs('public/news_Pic',$filenametostore);
         } else {
             $filenametostore='noimage.jpg';
@@ -69,6 +68,7 @@ class NewsPostController extends Controller
         
 
         $newspost = new NewsPost;
+        //Checks newspost data and saves it in the newspost database
         $newspost->Title = $request->input('title');
         $newspost->Body = $request->input('body');
         $newspost->Futurelab = $request->input('futurelab');
@@ -76,8 +76,8 @@ class NewsPostController extends Controller
         $newspost->User_ID = auth::user()->User_ID;
         $newspost->News_Pic= $filenametostore;
 
-        //nieuws status regelt of een newspost aan staat
-        $newspost->News_status ='open';
+        //Sets newspost status to make sure if a newspost is visable or not.
+        $newspost->News_status =$request->input('newsstatus');
         $newspost->save();
 
         return redirect('/newsposts')->with('succes','News added');
@@ -91,6 +91,7 @@ class NewsPostController extends Controller
      */
     public function show($id)
     {
+        //Shows all newsposts.
         $newspost = NewsPost::find($id);
         return view('newsposts.show')->with('newspost',$newspost);
     }
@@ -122,25 +123,29 @@ class NewsPostController extends Controller
         ]);
         if ($request->hasFile ('news_Pic')){
             $filenameWhithtxt = $request->file ('news_Pic')-> getClientOriginalName(); 
-            // Get just filename
+            //Get just filename
             $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
-            //get just ext
+            //Get just ext
             $extention= $request->file('news_Pic')->getClientOriginalExtension();
             //Filename to store
             $filenametostore = $filename.time().'.'.$extention; 
-            //upload image
+            //Upload image
             $path = $request->file('news_Pic')->storeAs('public/news_Pic',$filenametostore);
         } else {
             $filenametostore='noimage.jpg';
         }
         return $filenametostore;
 
+        //Checks newspost data and saves it in the newspost database.
         $newspost = NewsPost::find($id);
         $newspost->Title = $request->input('title');
         $newspost->Body = $request->input('body');
         $newspost->Futurelab = $request->input('futurelab');
-
-        //$newspost->News_Status = $request->input('news_status');
+        
+        //Sets newspost status to make sure if a newspost is visable or not.
+        $newspost->News_Status = $request->input('newsstatus');
+        
+        //Checks if image is added to newspost
         if($filenametostore != 'noimage.jpg'){
             $event->Event_Pic = $filenametostore;
         }
@@ -159,7 +164,7 @@ class NewsPostController extends Controller
     public function destroy($id)
     {
         $newsposts = NewsPost::find($id);
-
+        //Removes newspost data from database.
         $newsposts->delete();
         return redirect('/newsposts')->with('success', 'Post Removed');
     }

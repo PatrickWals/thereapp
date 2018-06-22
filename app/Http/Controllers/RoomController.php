@@ -14,10 +14,9 @@ class RoomController extends Controller
      */
     public function index()
     {
+        //Shows all the rooms.
         $rooms = Room::all();
-        //return $rooms;
-
-
+        
         return view('rooms.index')->with('rooms', $rooms);
 
     }
@@ -40,6 +39,7 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+        //Validates the room data.
         $this->validate($request,[
             'roomname' => 'required',
             'description' => 'required',
@@ -47,18 +47,19 @@ class RoomController extends Controller
         ]);
         if ($request->hasFile ('room_image')){
             $filenameWhithtxt = $request->file ('room_image')-> getClientOriginalName(); 
-            // Get just filename
+            //Get just filename
             $filename = pathinfo ($filenameWhithtxt, PATHINFO_FILENAME); 
-            //get just ext
+            //Get just ext
             $extention= $request->file('room_image')->getClientOriginalExtension();
             //Filename to store
             $filenametostore = $filename.time().'.'.$extention; 
-            //upload image
+            //Upload image
             $path = $request->file('room_image')->storeAs('public/room_image',$filenametostore);
         } else {
             $filenametostore='noimage.jpg';
         }
 
+        //Requests room data and save the data
         $room = new Room;
         $room->RoomName = $request->input('roomname');
         $room->Description = $request->input('description');
@@ -107,6 +108,7 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //Validates the room data.
         $this->validate($request,[
             'roomname' => 'required',
             'description' => 'required',
@@ -126,6 +128,7 @@ class RoomController extends Controller
             $filenametostore='noimage.jpg';
         }
 
+        //Requests room data and save the data
         $room = Room::find($id);
         $room->RoomName = $request->input('roomname');
         $room->Description = $request->input('description');
@@ -146,7 +149,7 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $room = Room::find($id);
-
+        //Removes roomdata from database.
         $room->delete(); 
 
         return redirect('/rooms')->with('success', 'Room Removed');  
