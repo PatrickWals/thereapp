@@ -9,9 +9,6 @@ use Auth;
 
 class ReservationController extends Controller
 {
-
-
-
     /**
      * Create a new controller instance.
      *

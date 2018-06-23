@@ -110,9 +110,12 @@ class RoomController extends Controller
     {
         //Validates the room data.
         $this->validate($request,[
-            'roomname' => 'required',
+            'roomname' => 'required|min:4',
             'description' => 'required',
-            'roomprice' => 'integer|required|min:0'
+            'roomprice' => 'integer|required|min:0',
+            'futurelab' => 'required',
+            'roomstatus' => 'required',
+            'room_image' => 'image|nullable|max:1999'
         ]);
         if ($request->hasFile ('room_image')){
             $filenameWhithtxt = $request->file ('room_image')-> getClientOriginalName(); 

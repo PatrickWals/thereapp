@@ -55,7 +55,13 @@ class EventController extends Controller
     {
         $this->validate($request, [
             'eventname' => 'required|min:5' ,
-            'body' => 'required'
+            'body' => 'required',
+            'eventlink' => 'string|nullable',
+            'event_image' => 'image|nullable|max:1999',
+            'eventdate' => 'date|required',
+            'room'=>'required',
+            'futurelab' =>'required',
+            'eventstatus'=>'required'
         ]);   
         if ($request->hasFile ('event_image')){
             $filenameWhithtxt = $request->file ('event_image')-> getClientOriginalName(); 

@@ -50,7 +50,10 @@ class NewsPostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|min:5' ,
-            'body' => 'required'
+            'body' => 'required',
+            'news_pic'=>'image|nullable|max:1999',
+            'futurelab' => 'required',
+            'newsstatus' => 'required'
         ]);   
         if ($request->hasFile ('news_Pic')){
             $filenameWhithtxt = $request->file ('news_Pic')-> getClientOriginalName(); 
@@ -66,7 +69,6 @@ class NewsPostController extends Controller
             $filenametostore='noimage.jpg';
         }
         
-
         $newspost = new NewsPost;
         //Checks newspost data and saves it in the newspost database
         $newspost->Title = $request->input('title');
@@ -119,7 +121,10 @@ class NewsPostController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'futurelab' => 'required',
+            'newsstatus' => 'required',
+            'news_pic'=>'image|nullable|max:1999'
         ]);
         if ($request->hasFile ('news_Pic')){
             $filenameWhithtxt = $request->file ('news_Pic')-> getClientOriginalName(); 

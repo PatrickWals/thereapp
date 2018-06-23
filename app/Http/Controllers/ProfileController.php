@@ -108,7 +108,8 @@ class ProfileController extends Controller
             'phone' => '',
             'mobile' => '',
             'email' => 'required',
-            'profile_image'=> 'image|nullable|max:1999' 
+            'profile_image'=> 'image|nullable|max:1999',
+            'aboutme'=>'string|nullable'
             ]);
         
     if ($request->hasFile ('profile_image')){

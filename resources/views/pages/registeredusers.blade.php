@@ -1,8 +1,10 @@
 @extends('_layouts.app')
 
 @section('content')
+<div class="container">
+    <h1>Gebruikers</h1>
+</div>
 
-<h1>Gebruikers</h1>
 @if(count($users)>0)
 <div class="container">
     <ul>
